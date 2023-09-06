@@ -1,0 +1,37 @@
+
+Overwrites used normally in Designer Generated Files
+
+Original:
+import buttonsGlassRound_rc
+import png_rc
+import readfiles_rc
+import splash_rc
+
+Replacement:
+import resources.buttonsGlassRound_rc
+import resources.png_rc
+import resources.readfiles_rc
+import resources.splash_rc
+
+Add to bottom of .ui
+ <resources>
+  <include location="../resources/buttonsGlassRound.qrc"/>
+  <include location="../resources/png.qrc"/>
+  <include location="../resources/readfiles.qrc"/>
+  <include location="../resources/splash.qrc"/>
+ </resources>
+ <connections/>
+</ui>
+
+
+@classmethod
+def get_key_modifiers(cls):
+    QModifiers = Qt.QtWidgets.QApplication.keyboardModifiers()
+    modifiers = []
+    if (QModifiers & Qt.QtCore.Qt.ShiftModifier) == Qt.QtCore.Qt.ShiftModifier:
+        modifiers.append('shift')
+    if (QModifiers & Qt.QtCore.Qt.ControlModifier) == Qt.QtCore.Qt.ControlModifier:
+        modifiers.append('control')
+    if (QModifiers & Qt.QtCore.Qt.AltModifier) == Qt.QtCore.Qt.AltModifier:
+        modifiers.append('alt')
+    return modifiers

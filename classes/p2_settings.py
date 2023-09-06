@@ -1,0 +1,180 @@
+
+
+
+from PySide6 import (
+    QtCore
+)
+
+class P2_Settings:
+    """A Class for Settings."""
+    def __init__(self) -> None: 
+        """Init for Settings."""   
+        super().__init__()
+        self.class_version = "0.0.1.dev"
+        self.author_name = "Julian Bourne"
+        self.database_path = "database"
+        self.database = "projectionistTest.db"
+
+
+    def __str__(self) -> str:
+        # trunk-ignore(ruff/D401)
+        """The __str__ Function."""
+        return "P2_Settings"
+
+    def __repr__(self) -> str:
+        # trunk-ignore(ruff/D401)
+        """The __repr__ Function."""
+        return "P2_Settings"
+
+    def get_class_version(self) -> str:
+        # trunk-ignore(ruff/D401)
+        """The Version String of this Class."""
+        return self.class_version
+
+    def get_author_name(self) -> str:
+        # trunk-ignore(ruff/D401)
+        """The Author String of this Class."""
+        return self.author_name
+    
+    
+    def setup_settings(self) -> None:
+        """Check and initialise the settings database."""
+    
+        if not os.path.exists(self.database_path):
+            os.makedirs(self.database_path)
+
+    def create_tables(self) -> None:
+        """Create the Table if it does not Exist."""
+
+        connection = sqlite3.connect(self.database, timeout=10000)
+        cursor = connection.cursor()
+
+        # Create the Geometry Table
+        cursor.execute('''CREATE TABLE IF NOT EXISTS Geometry
+        (ID INT NOT NULL  DEFAULT 1 PRIMARY KEY,
+        P1  INT NOT NULL  DEFAULT 0,
+        P2  INT NOT NULL  DEFAULT 0,
+        P3  INT NOT NULL  DEFAULT 0,
+        P4  INT NOT NULL  DEFAULT 0
+        );''')
+        connection.commit()
+
+        # Create the Theme Table
+        cursor.execute('''CREATE TABLE IF NOT EXISTS Theme 
+        (ID INT  NOT NULL  DEFAULT 1 PRIMARY KEY,
+        P1  TEXT NOT NULL  
+        );''')        
+        connection.commit()
+
+        # Create the Splash Table
+        cursor.execute('''CREATE TABLE IF NOT EXISTS Splash 
+        (ID INT  NOT NULL DEFAULT 1 PRIMARY KEY,
+        P1  INT  NOT NULL DEFAULT 1 
+        );''')            
+        connection.commit()
+
+        # Setup with default Data
+        cursor.execute('''INSERT INTO Geometry (ID, P1, P2, P3, P4) \
+        VALUES (?, ?, ?, ?, ?);''', (1, 0, 0, 0, 0))
+        connection.commit()
+
+        cursor.execute('''INSERT INTO Theme (ID, P1) \
+        VALUES (?, ?);''', (1, "auto"))
+        connection.commit()
+
+        cursor.execute('''INSERT INTO Splash (ID, P1) \
+        VALUES (?, ?);''', (1, True))
+        connection.commit()                
+
+        connection.close()
+
+    def save_geometry(self, geo) -> None:
+        """Save the Geometry."""
+
+        T1 = geo.x()
+        T2 = geo.y()
+        T3 = geo.width()
+        T4 = geo.height()
+
+        connection = sqlite3.connect(self.database, timeout=10000)
+
+        connection.execute('''DELETE from Geometry;''')      
+        connection.commit()
+
+        connection.execute('''INSERT INTO Geometry (ID, P1, P2, P3, P4) \
+        VALUES (?, ?, ?, ?, ?);''', (1, T1, T2, T3, T4))
+        connection.commit()
+        connection.close()
+
+    def save_theme(self, theme="auto") -> None:
+        """Save the Theme."""
+
+        T1 = theme
+        connection = sqlite3.connect(self.database, timeout=10000)
+
+        connection.execute('''DELETE from Theme;''')      
+        connection.commit()       
+
+        connection.execute('''INSERT INTO Theme (ID, P1) \
+        VALUES (?, ?);''', (1, T1))
+        connection.commit()
+        connection.close()        
+
+    def save_splash(self, splash=1) -> None:
+        """Save the Splash."""
+
+        T1 = splash
+        connection = sqlite3.connect(self.database, timeout=10000)
+
+        connection.execute('''DELETE from Splash;''')      
+        connection.commit()       
+
+        connection.execute('''INSERT INTO Splash (ID, P1) \
+        VALUES (?, ?);''', (1, T1))
+        connection.commit()
+        connection.close()           
+
+
+    def get_geometry(self) -> QtCore.QRect:
+        """Get the Geometry."""   
+
+        connection = sqlite3.connect(self.database, timeout=10000)
+
+        cursor = connection.execute('''SELECT P1, P2, P3, P4 FROM Geometry WHERE ID = 1;''')  # noqa: E501
+
+        connection.commit()
+
+        one_result = cursor.fetchone()
+
+        T1 = one_result[0]
+        T2 = one_result[1]
+        T3 = one_result[2]
+        T4 = one_result[3] 
+
+        return QtCore.QRect(T1, T2, T3, T4)
+
+
+    def get_theme(self) -> str:  # sourcery skip: assign-if-exp
+        """Get the Theme.""" 
+        connection = sqlite3.connect(self.database, timeout=10000)
+
+        cursor = connection.execute('''SELECT P1 from Theme WHERE ID = 1;''')        # noqa: E501
+        connection.commit()
+
+        one_result = cursor.fetchone()
+
+        return one_result[0]
+
+
+    def get_splash(self) -> bool:
+        """Get the Splash."""
+
+        connection = sqlite3.connect(self.database, timeout=10000)
+
+        cursor = connection.execute('''SELECT P1 from Splash WHERE ID = 1;''')        # noqa: E501
+        connection.commit()
+
+        one_result = cursor.fetchone()
+
+        return one_result[0]
+    
