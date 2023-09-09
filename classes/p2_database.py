@@ -154,6 +154,75 @@ class ProjDatabase:
                 self.connection.close()
         return status
 
+    def get_records_geometry(self) -> int:
+        # sourcery skip: extract-method, inline-immediately-returned-variable
+        """Return number of geometry records."""
+        status = -1
+        try:
+            self.connection = sqlite3.connect(self.database, timeout=10000)
+            self.cursor = self.connection.cursor()
+            self.cursor.execute('''SELECT COUNT(*) FROM Geometry;''')
+            self.connection.commit()
+            status = self.cursor.fetchall()
+        except Error as error_code:
+            self.module_error = float(self.module_error) + 0.0006
+            self.module_error_message = f"Unable to get number of Geometry Records. Error {error_code}"  # noqa: E501
+            print(f"Error: {self.module_error} {self.module_error_message}")
+            traceback.print_exc() # type: ignore
+            traceback.print_exception() # type: ignore
+            status = -1
+        finally:
+            if self.connection:
+                self.cursor = None
+                self.connection.close()
+        return status # type: ignore
+
+    def get_records_theme(self) -> int:
+        # sourcery skip: extract-method, inline-immediately-returned-variable
+        """Return number of theme records."""
+        status = -1
+        try:
+            self.connection = sqlite3.connect(self.database, timeout=10000)
+            self.cursor = self.connection.cursor()
+            self.cursor.execute('''SELECT COUNT(*) FROM Theme;''')
+            self.connection.commit()
+            status = self.cursor.fetchall()
+        except Error as error_code:
+            self.module_error = float(self.module_error) + 0.0007
+            self.module_error_message = f"Unable to get number of Theme Records. Error {error_code}"  # noqa: E501
+            print(f"Error: {self.module_error} {self.module_error_message}")
+            traceback.print_exc() # type: ignore
+            traceback.print_exception() # type: ignore
+            status = -1
+        finally:
+            if self.connection:
+                self.cursor = None
+                self.connection.close()
+        return status # type: ignore
+
+    def get_records_splash(self) -> int:
+        # sourcery skip: extract-method, inline-immediately-returned-variable
+        """Return number of splash records."""
+        status = -1
+        try:
+            self.connection = sqlite3.connect(self.database, timeout=10000)
+            self.cursor = self.connection.cursor()
+            self.cursor.execute('''SELECT COUNT(*) FROM Splash;''')
+            self.connection.commit()
+            status = self.cursor.fetchall()
+        except Error as error_code:
+            self.module_error = float(self.module_error) + 0.0008
+            self.module_error_message = f"Unable to get number of Splash Records. Error {error_code}"  # noqa: E501
+            print(f"Error: {self.module_error} {self.module_error_message}")
+            traceback.print_exc() # type: ignore
+            traceback.print_exception() # type: ignore
+            status = -1
+        finally:
+            if self.connection:
+                self.cursor = None
+                self.connection.close()
+        return status # type: ignore
+
     def __str__(self) -> str:
         """Return the __str__ Function."""
         return "P2_Settings"
