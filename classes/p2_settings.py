@@ -5,6 +5,9 @@ from PySide6 import (
     QtCore
 )
 
+import sqlite3
+from sqlite3 import Error
+
 class P2_Settings:
     """A Class for Settings."""
     def __init__(self) -> None: 

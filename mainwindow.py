@@ -48,7 +48,7 @@ from sqlitedict import (
 )
 
 from classes import (
-    p2_settings
+    p2_database
 )
 
 from mainwindow_ui import Ui_MainWindow
@@ -60,15 +60,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         super().__init__()
         self.setupUi(self)  # type: ignore
         self.app = app  # declare an app member
-        self.p_settings = p2_settings.P2_Settings()
-        self.current_theme = self.p_settings.get_theme()
+        self.p_database = p2_database.ProjDatabase()
+        self.current_theme = self.p_database.get_theme()
 
         self.R0C0_Context_Menu()
 
         self.pushButton_R0C0.setMenu(self.menu)
 
     def R0C0_Context_Menu(self) -> None:
-        """The Context Menu."""
+        """Create the Context Menu."""
         self.menu = QMenu()
 
         R0C0_action_new = self.action_New
