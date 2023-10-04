@@ -2,7 +2,6 @@
 # coding: utf-8
 
 import os
-import sys
 import traceback
 import pathlib
 
@@ -12,16 +11,16 @@ from sqlite3 import Error
 from PySide6.QtCore import QRect
 
 class ProjDatabase:
-    """The Class for Database work."""
+    """The Class for Database Work."""
     ########################
     # Covered in Test 1    #
     ########################
     def __init__(self, database) -> None:
         # sourcery skip: aug-assign, remove-redundant-pass, remove-unnecessary-cast
-        """Init for Settings."""   
+        """ Init for Database Work. """
         super().__init__()
 
-        self.class_version = "0.0.1.dev"
+        self.class_version = "0.0.2.dev"
         self.module_index = "10"
         self.author_name = "Julian Bourne"
         # self.script_path = pathlib.Path(__file__).parent.resolve()
@@ -30,9 +29,10 @@ class ProjDatabase:
         self.script_path = pathlib.Path(__file__).parent.resolve().parents[0]
         self.database_path = rf"{self.script_path}/db"
         self.database = database
+        print(f"Database Name 2 = {self.database}")
 
         self.fullfile = rf"{self.database_path}/{self.database}"
-        self.module_error = float(0.0)
+        self.module_error = 0.0
         self.module_error_message = "No Error"
         self.connection = None
         self.cursor = None
@@ -62,11 +62,11 @@ class ProjDatabase:
 
     def __str__(self) -> str:
         """Return the __str__ Function."""
-        return "P2_Settings"
+        return "p2_database"
 
     def __repr__(self) -> str:
         """Return the __repr__ Function."""
-        return "P2_Settings"
+        return "p2_database"
 
     def get_class_version(self) -> str:
         """Return the Version String of this Class."""
@@ -116,7 +116,7 @@ class ProjDatabase:
         try:
             if not os.path.isfile(self.fullfile):
                 self.connection = sqlite3.connect(self.fullfile, timeout=10000)
-            status = True    
+            status = True
         except Error as error_code:
             self.module_error = float(self.module_index) + 0.0002
             self.module_error_message = f"Unable to create {self.fullfile} Database. Error {error_code}"  # noqa: E501
@@ -148,19 +148,19 @@ class ProjDatabase:
                                 P2  integer NOT NULL  DEFAULT 0,
                                 P3  integer NOT NULL  DEFAULT 0,
                                 P4 integer NOT NULL  DEFAULT 0) """)
-            self.connection.commit()            
+            self.connection.commit()
         except Error as error_code:
             self.module_error = float(self.module_index) + 0.0003
             self.module_error_message = f"Unable to create {self.database_path} Geometry Table. Error {error_code}"  # noqa: E501
             print(f"Error: {self.module_error} {self.module_error_message}")
             traceback.print_exc() # type: ignore
             traceback.print_exception() # type: ignore
-            
+
         finally:
             if self.connection:
                 self.cursor = None
-                self.connection.close()            
-        return status        
+                self.connection.close()
+        return status
 
     ########################
     # Covered in Test 2    #
@@ -178,7 +178,7 @@ class ProjDatabase:
             self.cursor.execute(""" CREATE TABLE IF NOT EXISTS Theme
                                 (ID integer NOT NULL DEFAULT 1 PRIMARY KEY,
                                 P1  TEXT NOT NULL DEFAULT 'auto') """)
-            self.connection.commit()            
+            self.connection.commit()
         except Error as error_code:
             self.module_error = float(self.module_index) + 0.0004
             self.module_error_message = f"Unable to create {self.fullfile} Theme Table. Error {error_code}"  # noqa: E501
@@ -361,7 +361,7 @@ class ProjDatabase:
     ########################
     def __set_default_geometry(self) -> bool:
         """Set the default Geometry."""
-        return self.update_geometry(0, 0, 0, 0)
+        return self.update_geometry(360, 240, 1190, 590)
 
     ########################
     # Covered in Test 2    #
@@ -387,14 +387,14 @@ class ProjDatabase:
     ########################
     # Covered in Test 2 7  #
     ########################
-    def update_geometry(self, x: int = 0, y: int = 0, w: int = 0, h: int = 0) -> bool:   # type: ignore  # noqa: E501
+    def update_geometry(self, x: int = 0, y: int = 0, w: int = 1197, h: int = 589) -> bool:   # type: ignore  # noqa: E501
         """Update the Geometry Table."""
         status = False
         try:
             T1 = x or 0
             T2 = y or 0
-            T3 = w or 0
-            T4 = h or 0
+            T3 = w or 1197
+            T4 = h or 589
             self.connection = sqlite3.connect(self.fullfile, timeout=10000)
             self.cursor = self.connection.cursor()
 

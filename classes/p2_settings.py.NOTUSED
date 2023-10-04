@@ -20,26 +20,21 @@ class P2_Settings:
 
 
     def __str__(self) -> str:
-        # trunk-ignore(ruff/D401)
         """The __str__ Function."""
         return "P2_Settings"
 
     def __repr__(self) -> str:
-        # trunk-ignore(ruff/D401)
         """The __repr__ Function."""
         return "P2_Settings"
 
     def get_class_version(self) -> str:
-        # trunk-ignore(ruff/D401)
         """The Version String of this Class."""
         return self.class_version
 
     def get_author_name(self) -> str:
-        # trunk-ignore(ruff/D401)
         """The Author String of this Class."""
         return self.author_name
-    
-    
+        
     def setup_settings(self) -> None:
         """Check and initialise the settings database."""
     

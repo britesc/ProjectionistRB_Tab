@@ -2,15 +2,25 @@
 # coding: utf-8
 
 """Main Test and debug application for database class."""
+from PySide6 import (
+    QtCore
+)
 
 from classes import (
     p2_database
 )
+def setup_app() -> None:
+    """Set the Application Information."""
+    QtCore.QCoreApplication.setOrganizationName("J2Casa")
+    QtCore.QCoreApplication.setOrganizationDomain("j2casa.com")
+    QtCore.QCoreApplication.setApplicationName("Projectionist")
+    QtCore.QCoreApplication.setApplicationVersion("2.0.0.dev")
+
 
 def main():
     """Call the Main Function to get us going."""  
     print("Starting Tests.")
-    print("")    
+    print("")
     print("\tSetting Script Path.")
     print("")
 
@@ -66,6 +76,7 @@ def main():
 
     print("Ending Tests")
 
+# Run the Application.
 if __name__ == '__main__':
-    """ Run the Application. """
+    setup_app()
     main()

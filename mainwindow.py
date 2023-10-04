@@ -60,8 +60,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         super().__init__()
         self.setupUi(self)  # type: ignore
         self.app = app  # declare an app member
-        self.p_database = p2_database.ProjDatabase()
-        self.current_theme = self.p_database.get_theme()
+        self.p_database_name = f"{QtCore.QCoreApplication.applicationName()}.db"
+        print(f"Database Name 3 = {self.p_database_name}")
+        self.p_database = p2_database.ProjDatabase(self.p_database_name)
+        self.p_database.check_database_exists()
+        # self.current_theme = self.p_database.get_theme()
 
         self.R0C0_Context_Menu()
 

@@ -17,28 +17,26 @@ from PySide6.QtGui import (
     QIcon
 )
 
-from PySide6.QtCore import (
-    QCoreApplication
+from PySide6 import (
+    QtCore
 )
 
-
 from classes import (
-    p2_settings
+    p2_database,
+    p2_splash
 )
 
 from mainwindow import MainWindow
 
-# trunk-ignore(ruff/F401)
+
 import resources.buttonsGlassRound_rc  # noqa: F401
 
-
 def setup_app() -> None:
-    # trunk-ignore(ruff/D401)
-    """Setup the Application Information."""
-    QCoreApplication.setOrganizationName("J2Casa")
-    QCoreApplication.setOrganizationDomain("j2casa.com")
-    QCoreApplication.setApplicationName("Projectionist")    
-    QCoreApplication.setApplicationVersion("2.0.0.dev")
+    """Set the Application Information."""
+    QtCore.QCoreApplication.setOrganizationName("J2Casa")
+    QtCore.QCoreApplication.setOrganizationDomain("j2casa.com")
+    QtCore.QCoreApplication.setApplicationName("Projectionist")
+    QtCore.QCoreApplication.setApplicationVersion("3.0.0.dev")
 
 def main():  # sourcery skip: remove-pass-body, remove-redundant-pass, swap-if-else-branches  # noqa: E501
     # trunk-ignore(ruff/D401)
@@ -46,8 +44,22 @@ def main():  # sourcery skip: remove-pass-body, remove-redundant-pass, swap-if-e
     try:
         app = QApplication(sys.argv)
         window = MainWindow(app)
-        p_settings = p2_settings.P2_Settings()
-        
+
+        p_database_name = f"{QtCore.QCoreApplication.applicationName()}.db"
+        print(f"Database Name 1 = {p_database_name}")
+        p_database = p2_database.ProjDatabase(p_database_name)
+        p_database.check_database_exists()
+
+        do_splash = p_database.get_records_splash()
+        do_theme  = p_database.get_records_theme()
+        do_debug  = p_database.get_records_debug()
+        del p_database
+
+        if do_splash:
+            use_splash = p2_splash.ProjSplash(app)
+            use_splash.show(3)
+
+
 
         if not QSystemTrayIcon.isSystemTrayAvailable():
             pass
@@ -77,23 +89,12 @@ def main():  # sourcery skip: remove-pass-body, remove-redundant-pass, swap-if-e
 
             tray.setContextMenu(tray_menu)
 
-            p_settings.create_tables()
-            
-
-            # settings.save_geometry(window.geometry())
-            # settings.save_theme("dark")
-            # settings.save_splash(True)
-            
-            # print(f"Geometry {settings.get_geometry()}")
-            # print(f"Theme {settings.get_theme()}")
-            # print(f"Splash {settings.get_splash()}")
-        
             print(f"window geometry {window.geometry().getRect()}")
-            
-            qdarktheme.setup_theme(p_settings.get_theme()) 
-            
-        
+
+            # qdarktheme.setup_theme(p_settings.get_theme())
         window.show()
+        if do_splash:
+            use_splash.hide(window)
 
     except Exception as err:
         print("Unfortunately the Application has encountered an error \
@@ -103,6 +104,7 @@ and is unable to continue.")
         traceback.print_exception() # type: ignore
 
     finally:
+        print(f"window geometry {window.geometry().getRect()}")
         sys.exit(app.exec()) # type: ignore
 
 
