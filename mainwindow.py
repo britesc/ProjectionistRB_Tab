@@ -43,12 +43,14 @@ from PySide6.QtCore import (
     QEvent
 )
 
-from sqlitedict import (
-    SqliteDict
-)
 
 from classes import (
     p2_database
+)
+
+from pages import (
+    page01intro,
+    page02config
 )
 
 from mainwindow_ui import Ui_MainWindow
@@ -60,6 +62,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         super().__init__()
         self.setupUi(self)  # type: ignore
         self.app = app  # declare an app member
+
         self.p_database_name = f"{QtCore.QCoreApplication.applicationName()}.db"
         print(f"Database Name 3 = {self.p_database_name}")
         self.p_database = p2_database.ProjDatabase(self.p_database_name)
@@ -69,6 +72,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.R0C0_Context_Menu()
 
         self.pushButton_R0C0.setMenu(self.menu)
+
+        self.page01intro  = page01intro.Page01Intro()
+        self.page02config = page02config.Page02Config()
+
+        self.stackedWidget.addWidget(self.page01intro) # index 1
+        self.stackedWidget.setCurrentIndex(1)
+
+        
+        
+
 
     def R0C0_Context_Menu(self) -> None:
         """Create the Context Menu."""

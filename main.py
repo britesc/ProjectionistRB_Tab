@@ -89,7 +89,7 @@ def main():  # sourcery skip: remove-pass-body, remove-redundant-pass, swap-if-e
 
             tray.setContextMenu(tray_menu)
 
-            print(f"window geometry {window.geometry().getRect()}")
+            print(f"window geometry 1. {window.geometry().getRect()}")
 
             # qdarktheme.setup_theme(p_settings.get_theme())
         window.show()
@@ -104,7 +104,7 @@ and is unable to continue.")
         traceback.print_exception() # type: ignore
 
     finally:
-        print(f"window geometry {window.geometry().getRect()}")
+        print(f"window geometry 2. {window.geometry().getRect()}")
         sys.exit(app.exec()) # type: ignore
 
 
@@ -113,3 +113,4 @@ if __name__ == '__main__':
     """Where it all starts from."""
     setup_app()
     main()
+

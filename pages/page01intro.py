@@ -13,4 +13,8 @@ class Page01Intro(QWidget, Ui_Page01Intro):
     def __init__(self) -> None:
         super().__init__()
         self.setupUi(self)
+
+        self.labelInfoTitle.setStyleSheet("font-size:xx-large; font-weight:700;")
+        self.labelInfoDetails.setStyleSheet("font-size:medium; font-weight:700;")
+        self.labelInfoCopyright.setStyleSheet("font-size:small; font-weight:700;")
         

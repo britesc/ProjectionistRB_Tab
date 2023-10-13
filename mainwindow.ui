@@ -7,15 +7,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1197</width>
-    <height>589</height>
+    <width>600</width>
+    <height>500</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Projectionist</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../resources/png.qrc">
+   <iconset>
     <normaloff>:/Images/png/projectionist.png</normaloff>:/Images/png/projectionist.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -50,7 +50,7 @@
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="../resources/png.qrc">
+             <iconset>
               <normaloff>:/Images/png/projectionist.png</normaloff>:/Images/png/projectionist.png</iconset>
             </property>
             <property name="iconSize">
@@ -104,7 +104,7 @@
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="../resources/png.qrc">
+             <iconset>
               <normaloff>:/Images/png/arrowdown.png</normaloff>:/Images/png/arrowdown.png</iconset>
             </property>
             <property name="iconSize">
@@ -174,7 +174,7 @@
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="../resources/png.qrc">
+             <iconset>
               <normaloff>:/Images/png/help2.png</normaloff>:/Images/png/help2.png</iconset>
             </property>
             <property name="iconSize">
@@ -320,7 +320,7 @@
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="../resources/png.qrc">
+             <iconset>
               <normaloff>:/Images/png/arrowup.png</normaloff>:/Images/png/arrowup.png</iconset>
             </property>
             <property name="flat">
@@ -345,8 +345,35 @@
      <layout class="QVBoxLayout" name="verticalLayout_2_Bottom">
       <item>
        <widget class="QStackedWidget" name="stackedWidget">
-        <widget class="QWidget" name="page_Home"/>
-        <widget class="QWidget" name="page_Edit"/>
+        <property name="font">
+         <font>
+          <pointsize>48</pointsize>
+         </font>
+        </property>
+        <widget class="QWidget" name="page">
+         <widget class="QLabel" name="label">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>501</width>
+            <height>171</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>72</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">BIG LABEL</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </widget>
        </widget>
       </item>
      </layout>
@@ -356,7 +383,7 @@
   <widget class="QStatusBar" name="statusbar"/>
   <action name="action_New">
    <property name="icon">
-    <iconset resource="../resources/buttonsGlassRound.qrc">
+    <iconset>
      <normaloff>:/buttons/glassRound/glassButtonNew.png</normaloff>:/buttons/glassRound/glassButtonNew.png</iconset>
    </property>
    <property name="text">
@@ -371,7 +398,7 @@
   </action>
   <action name="action_Open">
    <property name="icon">
-    <iconset resource="../resources/buttonsGlassRound.qrc">
+    <iconset>
      <normaloff>:/buttons/glassRound/glassButtonOpen.png</normaloff>:/buttons/glassRound/glassButtonOpen.png</iconset>
    </property>
    <property name="text">
@@ -386,7 +413,7 @@
   </action>
   <action name="action_Close">
    <property name="icon">
-    <iconset resource="../resources/buttonsGlassRound.qrc">
+    <iconset>
      <normaloff>:/buttons/glassRound/glassButtonClose.png</normaloff>:/buttons/glassRound/glassButtonClose.png</iconset>
    </property>
    <property name="text">
@@ -398,7 +425,7 @@
   </action>
   <action name="action_Quit">
    <property name="icon">
-    <iconset resource="../resources/buttonsGlassRound.qrc">
+    <iconset>
      <normaloff>:/buttons/glassRound/glassButtonExit.png</normaloff>:/buttons/glassRound/glassButtonExit.png</iconset>
    </property>
    <property name="text">
@@ -413,7 +440,7 @@
   </action>
   <action name="action_Help_Master">
    <property name="icon">
-    <iconset resource="../resources/buttonsGlassRound.qrc">
+    <iconset>
      <normaloff>:/buttons/glassRound/glassButtonHelp2.png</normaloff>:/buttons/glassRound/glassButtonHelp2.png</iconset>
    </property>
    <property name="text">

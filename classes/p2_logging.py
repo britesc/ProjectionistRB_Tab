@@ -93,7 +93,9 @@ class ProjLogging:
 
             status = False
         finally:
-            return status
+            pass
+
+        return status
 
 
     ########################

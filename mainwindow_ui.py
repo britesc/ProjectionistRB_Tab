@@ -16,9 +16,9 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
-from PySide6.QtWidgets import (QApplication, QGridLayout, QHBoxLayout, QMainWindow,
-    QPushButton, QSizePolicy, QStackedWidget, QStatusBar,
-    QTabWidget, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QGridLayout, QHBoxLayout, QLabel,
+    QMainWindow, QPushButton, QSizePolicy, QStackedWidget,
+    QStatusBar, QTabWidget, QVBoxLayout, QWidget)
 import resources.buttonsGlassRound_rc
 import resources.png_rc
 import resources.readfiles_rc
@@ -28,7 +28,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1197, 589)
+        MainWindow.resize(600, 500)
         icon = QIcon()
         icon.addFile(u":/Images/png/projectionist.png", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
@@ -195,12 +195,21 @@ class Ui_MainWindow(object):
         self.verticalLayout_2_Bottom.setObjectName(u"verticalLayout_2_Bottom")
         self.stackedWidget = QStackedWidget(self.centralwidget)
         self.stackedWidget.setObjectName(u"stackedWidget")
-        self.page_Home = QWidget()
-        self.page_Home.setObjectName(u"page_Home")
-        self.stackedWidget.addWidget(self.page_Home)
-        self.page_Edit = QWidget()
-        self.page_Edit.setObjectName(u"page_Edit")
-        self.stackedWidget.addWidget(self.page_Edit)
+        font = QFont()
+        font.setPointSize(48)
+        self.stackedWidget.setFont(font)
+        self.page = QWidget()
+        self.page.setObjectName(u"page")
+        self.label = QLabel(self.page)
+        self.label.setObjectName(u"label")
+        self.label.setGeometry(QRect(40, 60, 501, 171))
+        font1 = QFont()
+        font1.setPointSize(72)
+        font1.setBold(True)
+        self.label.setFont(font1)
+        self.label.setText(u"BIG LABEL")
+        self.label.setAlignment(Qt.AlignCenter)
+        self.stackedWidget.addWidget(self.page)
 
         self.verticalLayout_2_Bottom.addWidget(self.stackedWidget)
 

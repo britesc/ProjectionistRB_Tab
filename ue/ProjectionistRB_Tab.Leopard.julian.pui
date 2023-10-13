@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ASCII"?>
+<!DOCTYPE PRJ SYSTEM "ProjectionistRB_Tab.Leopard.julian.dtd">
+<PRJ>
+  <Folder Name="/home/julian/Projects/Code/Python/PySide6/ProjectionistRB_Tab/ue/">
+    <Expand>1</Expand>
+  </Folder>
+  <Project_Information>
+    <Working_Time>308656201</Working_Time>
+    <Project_Start>1A0000000C000000110000000C000000090000007B000000040000001C01000001000000FC7F0000201C000000000000C0EC50EEB05500008F</Project_Start>
+    <MDIPerspective>(100,100,2098172,5,0,0,0,100000,1,(0,1,2,3,4))***(1593/1593,806/806,2098172,5,0,0,0,100000,1,(0,1,2,3,4))</MDIPerspective>
+    <ActiveViewIndex>0</ActiveViewIndex>
+    <ActiveOpenFile>/home/julian/Desktop/InPython2.code-profile</ActiveOpenFile>
+  </Project_Information>
+  <Folder Name="/home/julian/Projects/Code/Python/PySide6/ProjectionistRB_Tab/pages/">
+    <Expand>1</Expand>
+  </Folder>
+  <Folder Name="/home/julian/Projects/Code/Python/PySide6/ProjectionistRB_Tab/classes/">
+    <Expand>1</Expand>
+  </Folder>
+  <Folder Name="/home/julian/Projects/Code/Python/PySide6/ProjectionistRB_Tab/">
+    <Expand>1</Expand>
+  </Folder>
+  <Active_Settings>
+    <Active_File_Display_Mode>-1</Active_File_Display_Mode>
+  </Active_Settings>
+  <Open_Files>
+    <File>/home/julian/Projects/Code/Python/PySide6/ProjectionistRB_Tab/classes/p2_database.py</File>
+    <File>/home/julian/Desktop/InPython.code-profile</File>
+    <File>/home/julian/Projects/Code/Python/PySide6/ProjectionistRB_Tab/pages/page02config.py</File>
+    <File>/home/julian/Projects/Code/Python/PySide6/ProjectionistRB_Tab/pages/page01intro.py</File>
+    <File>/home/julian/Desktop/InPython2.code-profile</File>
+  </Open_Files>
+  <Folder Name="ProjectionistRB_Tab">
+    <Expand>1</Expand>
+  </Folder>
+</PRJ>
