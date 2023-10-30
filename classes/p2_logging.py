@@ -27,7 +27,7 @@ class ProjLogging:
 
         self.script_path = pathlib.Path(__file__).parent.resolve().parents[0]
         self.logging_path = rf"{self.script_path}/logs"
-        self.debugstatus = level
+        self.loggingstatus = level
         self.logdate = datetime.date.today()
         self.logfilename = f"{QtCore.QCoreApplication.applicationName()}.{self.logdate}.log"  # noqa: E501
         self.fullfile = rf"{self.logging_path}/{self.logfilename}"
@@ -76,7 +76,7 @@ class ProjLogging:
             logging.basicConfig(
                 filename=self.fullfile,
                 encoding='utf-8',
-                level=self.debugstatus,
+                level=self.loggingstatus,
                 format='%(asctime)s %(name)s %(levelname)s: %(module)s %(funcName)s: %(lineno)s %(message)s',  # noqa: E501
                 datefmt='%d/%m/%Y %H:%M:%S'
             )
@@ -103,8 +103,8 @@ class ProjLogging:
     ########################
     def change_logging_level(self, level)-> None:
         """Change the logging level."""
-        self.debugstatus = level
-        logging.getLogger().setLevel(self.debugstatus)
+        self.loggingstatus = level
+        logging.getLogger().setLevel(self.loggingstatus)
 
     ########################
     # Covered in Test 4    #

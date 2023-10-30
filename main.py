@@ -6,30 +6,45 @@ import traceback
 import qdarktheme
 
 
-from PySide6.QtWidgets import (
-    QApplication,
-    QSystemTrayIcon,
-    QMenu
-)    
-
-from PySide6.QtGui import (
-    QAction,
-    QIcon
-)
-
 from PySide6 import (
     QtCore
 )
 
+from PySide6.QtWidgets import (
+    QApplication,
+    QSystemTrayIcon,
+    QMenu,
+)
+
+from PySide6.QtGui import (
+    QAction,
+    QIcon,
+)
+
+from PySide6.QtCore import (
+    QCoreApplication,
+)
+
+from PySide6.QtWidgets import (
+    QMainWindow,
+    QPushButton
+)
+
 from classes import (
-    p2_database,
-    p2_splash
+    p2_splash,
+    p2_logging
+)
+
+from classes.p2_db import(
+    # p2_db_geometry,
+    p2_db_logging,
+    p2_db_splash,
+    p2_db_theme
 )
 
 from mainwindow import MainWindow
 
-
-import resources.buttonsGlassRound_rc  # noqa: F401
+from resources import buttonsGlassRound_rc  # noqa: F401
 
 def setup_app() -> None:
     """Set the Application Information."""
@@ -38,7 +53,7 @@ def setup_app() -> None:
     QtCore.QCoreApplication.setApplicationName("Projectionist")
     QtCore.QCoreApplication.setApplicationVersion("3.0.0.dev")
 
-def main():  # sourcery skip: remove-pass-body, remove-redundant-pass, swap-if-else-branches  # noqa: E501
+def main():    # sourcery skip: remove-pass-body, remove-redundant-pass, swap-if-else-branches  # noqa: E501
     # trunk-ignore(ruff/D401)
     """Main Function to get us going."""
     try:
@@ -46,20 +61,27 @@ def main():  # sourcery skip: remove-pass-body, remove-redundant-pass, swap-if-e
         window = MainWindow(app)
 
         p_database_name = f"{QtCore.QCoreApplication.applicationName()}.db"
-        print(f"Database Name 1 = {p_database_name}")
-        p_database = p2_database.ProjDatabase(p_database_name)
-        p_database.check_database_exists()
 
-        do_splash = p_database.get_records_splash()
-        do_theme  = p_database.get_records_theme()
-        do_debug  = p_database.get_records_debug()
-        del p_database
+        use_splash = False
+        use_logging  = False
 
+        splash_db = p2_db_splash.ProjTableSplash(p_database_name)
+        do_splash = splash_db.get_value_splash() # Tells us to use or not Splash
         if do_splash:
             use_splash = p2_splash.ProjSplash(app)
             use_splash.show(3)
+        del splash_db
 
+        theme_db = p2_db_theme.ProjTableTheme(p_database_name)
+        if do_theme := theme_db.get_value_theme():
+            qdarktheme.setup_theme(do_theme)
+        del theme_db
 
+        logging_db = p2_db_logging.ProjTableLogging(p_database_name)
+        if do_logging := logging_db.get_value_logging():
+            use_logging = p2_logging.ProjLogging(do_logging)
+            use_logging.log_entry("INFO", "Logging Started")
+        del logging_db
 
         if not QSystemTrayIcon.isSystemTrayAvailable():
             pass
@@ -67,7 +89,7 @@ def main():  # sourcery skip: remove-pass-body, remove-redundant-pass, swap-if-e
 
             app.setQuitOnLastWindowClosed(False)
 
-            tray_icon = QIcon(u":/buttons/glassRound/glassButtonProjectionist.png")  # noqa: E501
+            tray_icon = QIcon(":/buttons/glassRound/glassButtonProjectionist.png")  # noqa: E501
 
             tray = QSystemTrayIcon()
             tray.setIcon(tray_icon)
@@ -84,7 +106,7 @@ def main():  # sourcery skip: remove-pass-body, remove-redundant-pass, swap-if-e
 
             action2 = QAction("Quit")
             action2.triggered.connect(app.quit) # type: ignore
-            action2.setIcon(QIcon(u":/buttons/glassRound/glassButtonQuit.png"))
+            action2.setIcon(QIcon(":/buttons/glassRound/glassButtonQuit.png"))
             tray_menu.addAction(action2)
 
             tray.setContextMenu(tray_menu)
@@ -110,7 +132,7 @@ and is unable to continue.")
 
 
 if __name__ == '__main__':
-    """Where it all starts from."""
+    """ Where it all starts from. """
     setup_app()
     main()
 

@@ -50,7 +50,8 @@ from classes import (
 
 from pages import (
     page01intro,
-    page02config
+    page99test
+    # page02config
 )
 
 from mainwindow_ui import Ui_MainWindow
@@ -74,10 +75,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.pushButton_R0C0.setMenu(self.menu)
 
         self.page01intro  = page01intro.Page01Intro()
-        self.page02config = page02config.Page02Config()
+        self.page99test   = page99test.Page99Test()
+        # self.page02config = page02config.Page02Config()
 
         self.stackedWidget.addWidget(self.page01intro) # index 1
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.addWidget(self.page99test) # index 2
+
+        self.stackedWidget.setCurrentIndex(2)
 
         
         

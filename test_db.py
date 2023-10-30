@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 # coding: utf-8
 
-"""Main Test and debug application for database class."""
+""" Main Test and logging application for database class. """
+import sys
+
 from PySide6 import (
     QtCore
 )
@@ -9,6 +11,17 @@ from PySide6 import (
 from classes import (
     p2_database
 )
+
+from classes.p2_db import (
+    p2_db_geometry,
+    p2_db_logging,
+    p2_db_splash,
+    p2_db_theme,
+    p2_db_pfolder,
+    p2_db_appupdate,
+    p2_db_apps
+)
+
 def setup_app() -> None:
     """Set the Application Information."""
     QtCore.QCoreApplication.setOrganizationName("J2Casa")
@@ -18,63 +31,187 @@ def setup_app() -> None:
 
 
 def main():
-    """Call the Main Function to get us going."""  
+    """Call the Main Function to get us going."""
+
+    name_of_database = "SplitTest.db"
+
     print("Starting Tests.")
     print("")
-    print("\tSetting Script Path.")
+    print("-->\tSetting Script Path.")
     print("")
 
-    print("\tConstruction Tests")
-    print("\tTest 1 - Initialising Class as Db Test1")
-    db_test = p2_database.ProjDatabase("Test1.db")
-
-    print("\tTest 2 - check_database_exists")
-    db_test.check_database_exists()
+    print("\t-->\tTest 1 - Construction Tests")
+    print("\t\t-->\tTest 1a\t- Initialising Class")
+    db_test = p2_database.ProjDatabase(name_of_database)
+    print("\t\t-->\tTest 1b\t- db_test.__str__()")
+    print(f"\t\t-->\t__str__\t- {db_test.__str__()}")
+    print("\t\t-->\tTest 1c\t- db_test.__repr__()")
+    print(f"\t\t-->\t__repr__- {db_test.__repr__()}")
+    print("\t\t-->\tTest 1d\t- get_class_version()")
+    print(f"\t\t-->\tVersion\t- {db_test.get_class_version()}")
+    print("\t\t-->\tTest 1e\t- get_author_name()")
+    print(f"\t\t-->\tAuthor\t- {db_test.get_author_name()}")
+    print("\t\t-->\tTest 1f\t- get_module_index()")
+    print(f"\t\t-->\tMIndex\t- {db_test.get_module_index()}")
+    print("\t\t-->\tTest 1g\t- check_database_exists()")
+    print(f"\t\t-->\tExists\t- {db_test.check_database_exists()}")
+    print("\t\t-->\tTest 1h\t- get_database_name()")
+    print(f"\t\t-->\tName\t- {db_test.get_database_name()}")
+    print("\t\t-->\tTest 1i - get_database_path()")
+    print(f"\t\t-->\tName\t- {db_test.get_database_path()}")
+    print("\t\t-->\tTest 1j\t- get_database_fullname()")
+    print(f"\t\t-->\tName\t- {db_test.get_database_fullname()}")
+    print("\t\t-->\tTest 1k\t- get_modules()")
+    print(f"\t\t-->\t__dir__\t- {db_test.__dir__()}")
+    print("\t-->\tTest 1 Completed")
     print("")
 
-    print("\tGet Records Tests")    
-    # print("\tTest 3 - get_records_geometry")
-    print(f"\tTest 3 - get_records_geometry = {db_test.get_records_geometry()}")
-
-    # print("\tTest 4 - get_records_theme")
-    print(f"\tTest 4 - get_records_theme = {db_test.get_records_theme()}")
-
-    # print("\tTest 5 - get_records_splash")
-    print(f"\tTest 5 - get_records_splash = {db_test.get_records_splash()}")
-
-    # print("\tTest 6 - get_records_debug")
-    print(f"\tTest 6 - get_records_debug = {db_test.get_records_debug()}")
+    print("\t-->\tTest 2 - Geometry")
+    print("\t\t-->\tTest 2a - Initialising Class")
+    db_test = p2_db_geometry.ProjTableGeometry(name_of_database)
+    print("\t\t-->\tTest 2b - db_test.__str__()")
+    print(f"\t\t-->\t__str__ - {db_test.__str__()}")
+    print("\t\t-->\tTest 2c - db_test.__repr__()")
+    print(f"\t\t-->\t__repr__ - {db_test.__repr__()}")
+    print("\t\t-->\tTest 2d - get_class_version()")
+    print(f"\t\t-->\tVersion - {db_test.get_class_version()}")
+    print("\t\t-->\tTest 2e - get_author_name()")
+    print(f"\t\t-->\tAuthor - {db_test.get_author_name()}")
+    print("\t\t-->\tTest 2f - get_module_index()")
+    print(f"\t\t-->\tMIndex - {db_test.get_module_index()}")
+    print("\t\t-->\tTest 2g\t- get number of records")
+    print(f"\t\t-->\tExists\t- {db_test.get_records_geometry()}")
+    print("\t\t-->\tTest 2h\t- update_geometry")
+    print(f"\t\t-->\tUpdate\t- {db_test.update_geometry([1,2,3,4])}")
+    print("\t\t-->\tTest 2i\t- get_geometry")
+    print(f"\t\t-->\tUpdate\t- {db_test.get_geometry_record()}")
+    print("\t\t-->\tTest 1k\t- get_modules()")
+    print(f"\t\t-->\t__dir__\t- {db_test.__dir__()}")
+    print("\t-->\tTest 2 Geometry Completed")
     print("")
 
-    print("\tUpdate Tests")    
-    print("\tTest 7  - update_geometry (1,2,3,4)")
-    db_test.update_geometry(1,2,3,4)
-
-    print("\tTest 8  - update_theme 'dark'")
-    db_test.update_theme("dark")
-
-    print("\tTest 9  - update_splash 0")
-    db_test.update_splash(0)
-
-    print("\tTest 10 - update_debug 50")
-    db_test.update_debug(50)
+    print("\t-->\tTest 3 - Splash")
+    print("\t\t-->\tTest 3a - Initialising Class")
+    db_test = p2_db_splash.ProjTableSplash(name_of_database)
+    print("\t\t-->\tTest 3b - db_test.__str__()")
+    print(f"\t\t-->\t__str__ - {db_test.__str__()}")
+    print("\t\t-->\tTest 3c - db_test.__repr__()")
+    print(f"\t\t-->\t__repr__ - {db_test.__repr__()}")
+    print("\t\t-->\tTest 3d - get_class_version()")
+    print(f"\t\t-->\tVersion - {db_test.get_class_version()}")
+    print("\t\t-->\tTest 3e - get_author_name()")
+    print(f"\t\t-->\tAuthor - {db_test.get_author_name()}")
+    print("\t\t-->\tTest 3f - get_module_index()")
+    print(f"\t\t-->\tMIndex - {db_test.get_module_index()}")
+    print("\t\t-->\tTest 3g - get number of records")
+    print(f"\t\t-->\tExists - {db_test.get_records_splash()}")
+    print("\t\t-->\tTest 3h\t- get_modules()")
+    print(f"\t\t-->\t__dir__\t- {db_test.__dir__()}")
+    print("\t-->\tTest 3 Splash Completed")
     print("")
 
-    print("\tGet Records Test")
-    # print("Test 11 - get_geometry_record")
-    print(f"\tTest 11 - get_geometry_record = {db_test.get_geometry_record()}")
-
-    # print("Test 12 - get_theme_record")
-    print(f"\tTest 12 - get_theme_record = {db_test.get_theme_record()}")
-
-    # print("Test 13 - get_debug_record")
-    print(f"\tTest 13 - get_debug_record = {db_test.get_debug_record()}")  
-
-    # print("Test 14 - get_splash_record")
-    print(f"\tTest 14 - get_splash_record = {db_test.get_splash_record()}")  
+    print("\t-->\tTest 4 - Theme")
+    print("\t\t-->\tTest 4a - Initialising Class")
+    db_test = p2_db_theme.ProjTableTheme(name_of_database)
+    print("\t\t-->\tTest 4b - db_test.__str__()")
+    print(f"\t\t-->\t__str__ - {db_test.__str__()}")
+    print("\t\t-->\tTest 4c - db_test.__repr__()")
+    print(f"\t\t-->\t__repr__ - {db_test.__repr__()}")
+    print("\t\t-->\tTest 4d - get_class_version()")
+    print(f"\t\t-->\tVersion - {db_test.get_class_version()}")
+    print("\t\t-->\tTest 4e - get_author_name()")
+    print(f"\t\t-->\tAuthor - {db_test.get_author_name()}")
+    print("\t\t-->\tTest 4f - get_module_index()")
+    print(f"\t\t-->\tMIndex - {db_test.get_module_index()}")
+    print("\t\t-->\tTest 4g - get number of records")
+    print(f"\t\t-->\tExists - {db_test.get_records_theme()}")
+    print("\t\t-->\tTest 4h\t- get_modules()")
+    print(f"\t\t-->\t__dir__\t- {db_test.__dir__()}")
+    print("\t-->\tTest 4 Theme Completed")
     print("")
 
-    print("Ending Tests")
+    print("\t-->\tTest 5 - Logging")
+    print("\t\t-->\tTest 5a - Initialising Class")
+    db_test = p2_db_logging.ProjTableLogging(name_of_database)
+    print("\t\t-->\tTest 5b - db_test.__str__()")
+    print(f"\t\t-->\t__str__ - {db_test.__str__()}")
+    print("\t\t-->\tTest 5c - db_test.__repr__()")
+    print(f"\t\t-->\t__repr__ - {db_test.__repr__()}")
+    print("\t\t-->\tTest 5d - get_class_version()")
+    print(f"\t\t-->\tVersion - {db_test.get_class_version()}")
+    print("\t\t-->\tTest 5e - get_author_name()")
+    print(f"\t\t-->\tAuthor - {db_test.get_author_name()}")
+    print("\t\t-->\tTest 5f - get_module_index()")
+    print(f"\t\t-->\tMIndex - {db_test.get_module_index()}")
+    print("\t\t-->\tTest 5g - get number of records")
+    print(f"\t\t-->\tExists - {db_test.get_records_logging()}")
+    print("\t\t-->\tTest 5h\t- get_modules()")
+    print(f"\t\t-->\t__dir__\t- {db_test.__dir__()}")
+    print("\t-->\tTest 5 Logging Completed")
+    print("")
+
+    print("\t-->\tTest 6 - PFolder")
+    print("\t\t-->\tTest 6a - Initialising Class")
+    db_test = p2_db_pfolder.ProjTablePFolder(name_of_database)
+    print("\t\t-->\tTest 6b - db_test.__str__()")
+    print(f"\t\t-->\t__str__ - {db_test.__str__()}")
+    print("\t\t-->\tTest 6c - db_test.__repr__()")
+    print(f"\t\t-->\t__repr__ - {db_test.__repr__()}")
+    print("\t\t-->\tTest 6d - get_class_version()")
+    print(f"\t\t-->\tVersion - {db_test.get_class_version()}")
+    print("\t\t-->\tTest 6e - get_author_name()")
+    print(f"\t\t-->\tAuthor - {db_test.get_author_name()}")
+    print("\t\t-->\tTest 6f - get_module_index()")
+    print(f"\t\t-->\tMIndex - {db_test.get_module_index()}")
+    print("\t\t-->\tTest 6g - get number of records")
+    print(f"\t\t-->\tExists - {db_test.get_records_project_folder()}")
+    print("\t\t-->\tTest 6h\t- get_modules()")
+    print(f"\t\t-->\t__dir__\t- {db_test.__dir__()}")
+    print("\t-->\tTest 6 PFolder Completed")
+    print("")
+
+    print("\t-->\tTest 7 - AppUpdate")
+    print("\t\t-->\tTest 7a - Initialising Class")
+    db_test = p2_db_appupdate.ProjTableAppUpdate(name_of_database)
+    print("\t\t-->\tTest 7b - db_test.__str__()")
+    print(f"\t\t-->\t__str__ - {db_test.__str__()}")
+    print("\t\t-->\tTest 7c - db_test.__repr__()")
+    print(f"\t\t-->\t__repr__ - {db_test.__repr__()}")
+    print("\t\t-->\tTest 7d - get_class_version()")
+    print(f"\t\t-->\tVersion - {db_test.get_class_version()}")
+    print("\t\t-->\tTest 7e - get_author_name()")
+    print(f"\t\t-->\tAuthor - {db_test.get_author_name()}")
+    print("\t\t-->\tTest 7f - get_module_index()")
+    print(f"\t\t-->\tMIndex - {db_test.get_module_index()}")
+    print("\t\t-->\tTest 7g - get number of records")
+    print(f"\t\t-->\tExists - {db_test.get_records_app_update()}")
+    print("\t\t-->\tTest 7h\t- get_modules()")
+    print(f"\t\t-->\t__dir__\t- {db_test.__dir__()}")
+    print("\t-->\tTest 7 AppUpdate Completed")
+    print("")
+
+    print("\t-->\tTest 8 - Apps")
+    print("\t\t-->\tTest 8a - Initialising Class")
+    db_test = p2_db_apps.ProjTableApps(name_of_database)
+    print("\t\t-->\tTest 8b - db_test.__str__()")
+    print(f"\t\t-->\t__str__ - {db_test.__str__()}")
+    print("\t\t-->\tTest 8c - db_test.__repr__()")
+    print(f"\t\t-->\t__repr__ - {db_test.__repr__()}")
+    print("\t\t-->\tTest 8d - get_class_version()")
+    print(f"\t\t-->\tVersion - {db_test.get_class_version()}")
+    print("\t\t-->\tTest 8e - get_author_name()")
+    print(f"\t\t-->\tAuthor - {db_test.get_author_name()}")
+    print("\t\t-->\tTest 8f - get_module_index()")
+    print(f"\t\t-->\tMIndex - {db_test.get_module_index()}")
+    print("\t\t-->\tTest 8g - get number of records")
+    print(f"\t\t-->\tExists - {db_test.get_records_apps()}")
+    print("\t\t-->\tTest 8h\t- get_modules()")
+    print(f"\t\t-->\t__dir__\t- {db_test.__dir__()}")
+    print("\t-->\tTest 8 Apps Completed")
+    print("")
+
+    print("Tests Completed")
+    sys.exit()
 
 # Run the Application.
 if __name__ == '__main__':
