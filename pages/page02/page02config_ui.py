@@ -19,21 +19,41 @@ from PySide6.QtWidgets import (QApplication, QGridLayout, QGroupBox, QHBoxLayout
     QLabel, QLineEdit, QPushButton, QSizePolicy,
     QSpacerItem, QVBoxLayout, QWidget)
 import buttonsGlassRound_rc
+import png_rc
+import readfiles_rc
+import splash_rc
 
 class Ui_Page02Config(object):
     def setupUi(self, Page02Config):
         if not Page02Config.objectName():
             Page02Config.setObjectName(u"Page02Config")
-        Page02Config.resize(476, 359)
+        Page02Config.resize(474, 360)
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(1)
         sizePolicy.setHeightForWidth(Page02Config.sizePolicy().hasHeightForWidth())
         Page02Config.setSizePolicy(sizePolicy)
+        Page02Config.setWindowTitle(u"Page 02 Config")
+#if QT_CONFIG(tooltip)
+        Page02Config.setToolTip(u"Page 02 Tool Tip")
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(statustip)
+        Page02Config.setStatusTip(u"Page 02 Status Tip")
+#endif // QT_CONFIG(statustip)
+#if QT_CONFIG(whatsthis)
+        Page02Config.setWhatsThis(u"Page 02 Whats This")
+#endif // QT_CONFIG(whatsthis)
         self.gridLayout = QGridLayout(Page02Config)
         self.gridLayout.setObjectName(u"gridLayout")
-        self.gridLayoutConfigTab = QGridLayout()
-        self.gridLayoutConfigTab.setObjectName(u"gridLayoutConfigTab")
+        self.gridLayoutPage = QGridLayout()
+        self.gridLayoutPage.setObjectName(u"gridLayoutPage")
+        self.labelTitle = QLabel(Page02Config)
+        self.labelTitle.setObjectName(u"labelTitle")
+        self.labelTitle.setText(u"<html><head/><body><h1 style=\" margin-top:18px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:xx-large; font-weight:700;\">Configuration</span></h1></body></html>")
+        self.labelTitle.setAlignment(Qt.AlignCenter)
+
+        self.gridLayoutPage.addWidget(self.labelTitle, 0, 0, 1, 1)
+
         self.groupBoxProjectFolder = QGroupBox(Page02Config)
         self.groupBoxProjectFolder.setObjectName(u"groupBoxProjectFolder")
         sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
@@ -41,6 +61,7 @@ class Ui_Page02Config(object):
         sizePolicy1.setVerticalStretch(5)
         sizePolicy1.setHeightForWidth(self.groupBoxProjectFolder.sizePolicy().hasHeightForWidth())
         self.groupBoxProjectFolder.setSizePolicy(sizePolicy1)
+        self.groupBoxProjectFolder.setTitle(u"Project Folder Wizard")
         self.groupBoxProjectFolder.setFlat(False)
         self.verticalLayout_4 = QVBoxLayout(self.groupBoxProjectFolder)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
@@ -49,6 +70,7 @@ class Ui_Page02Config(object):
         self.verticalLayoutlabelTextProjectFolder.setObjectName(u"verticalLayoutlabelTextProjectFolder")
         self.labelTextProjectFolder = QLabel(self.groupBoxProjectFolder)
         self.labelTextProjectFolder.setObjectName(u"labelTextProjectFolder")
+        self.labelTextProjectFolder.setText(u"<html><head/><body><h4 style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:medium; font-weight:700;\">Please use the Wizard to locate your Master Project Folder.</span></h4></body></html>")
         self.labelTextProjectFolder.setMargin(1)
 
         self.verticalLayoutlabelTextProjectFolder.addWidget(self.labelTextProjectFolder)
@@ -61,6 +83,7 @@ class Ui_Page02Config(object):
         self.lineEditDisplayProjectFolder = QLineEdit(self.groupBoxProjectFolder)
         self.lineEditDisplayProjectFolder.setObjectName(u"lineEditDisplayProjectFolder")
         self.lineEditDisplayProjectFolder.setReadOnly(True)
+        self.lineEditDisplayProjectFolder.setPlaceholderText(u"Master Project Folder Location")
 
         self.verticalLayoutlineEditDisplayProjectFolder.addWidget(self.lineEditDisplayProjectFolder)
 
@@ -84,10 +107,19 @@ class Ui_Page02Config(object):
         self.pushButtonWizardProjectFolder.setSizePolicy(sizePolicy2)
         self.pushButtonWizardProjectFolder.setMinimumSize(QSize(48, 48))
         self.pushButtonWizardProjectFolder.setMaximumSize(QSize(48, 48))
+#if QT_CONFIG(tooltip)
+        self.pushButtonWizardProjectFolder.setToolTip(u"Location Wizard")
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(statustip)
+        self.pushButtonWizardProjectFolder.setStatusTip(u"Project Folder Location Wizard")
+#endif // QT_CONFIG(statustip)
         icon = QIcon()
-        icon.addFile(":/buttons/glassRound/glassButtonWizard.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u":/buttons/glassRound/glassButtonWizard.png", QSize(), QIcon.Normal, QIcon.Off)
         self.pushButtonWizardProjectFolder.setIcon(icon)
         self.pushButtonWizardProjectFolder.setIconSize(QSize(48, 48))
+#if QT_CONFIG(shortcut)
+        self.pushButtonWizardProjectFolder.setShortcut(u"Ctrl+Alt+1")
+#endif // QT_CONFIG(shortcut)
         self.pushButtonWizardProjectFolder.setFlat(True)
 
         self.horizontalLayoutButtonsProjectFolder.addWidget(self.pushButtonWizardProjectFolder)
@@ -100,23 +132,13 @@ class Ui_Page02Config(object):
         self.verticalLayout_4.addLayout(self.verticalLayoutButtonsProjectFolder)
 
 
-        self.gridLayoutConfigTab.addWidget(self.groupBoxProjectFolder, 1, 0, 1, 1)
-
-        self.labelConfigTitle = QLabel(Page02Config)
-        self.labelConfigTitle.setObjectName("labelConfigTitle")
-        self.labelConfigTitle.setAlignment(Qt.AlignCenter)
-
-        self.gridLayoutConfigTab.addWidget(self.labelConfigTitle, 0, 0, 1, 1)
-
-        self.labelConfigCopyright = QLabel(Page02Config)
-        self.labelConfigCopyright.setObjectName(u"labelConfigCopyright")
-
-        self.gridLayoutConfigTab.addWidget(self.labelConfigCopyright, 3, 0, 1, 1)
+        self.gridLayoutPage.addWidget(self.groupBoxProjectFolder, 1, 0, 1, 1)
 
         self.groupBoxLocateApps = QGroupBox(Page02Config)
         self.groupBoxLocateApps.setObjectName(u"groupBoxLocateApps")
         sizePolicy1.setHeightForWidth(self.groupBoxLocateApps.sizePolicy().hasHeightForWidth())
         self.groupBoxLocateApps.setSizePolicy(sizePolicy1)
+        self.groupBoxLocateApps.setTitle(u"Applications Locations Wizard")
         self.verticalLayout_2 = QVBoxLayout(self.groupBoxLocateApps)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(-1, 0, -1, 0)
@@ -124,6 +146,8 @@ class Ui_Page02Config(object):
         self.verticalLayoutApplicatiosWizardText.setObjectName(u"verticalLayoutApplicatiosWizardText")
         self.labelTextApplicationsWizard = QLabel(self.groupBoxLocateApps)
         self.labelTextApplicationsWizard.setObjectName(u"labelTextApplicationsWizard")
+        self.labelTextApplicationsWizard.setText(u"<html><head/><body><h4 style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:medium; font-weight:700;\">Please locate applications using the Wizard.</span></h4></body></html>\n"
+"")
         self.labelTextApplicationsWizard.setWordWrap(True)
         self.labelTextApplicationsWizard.setMargin(1)
 
@@ -138,32 +162,38 @@ class Ui_Page02Config(object):
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.labelTextLastRun = QLabel(self.groupBoxLocateApps)
         self.labelTextLastRun.setObjectName(u"labelTextLastRun")
+        self.labelTextLastRun.setText(u"Last Run:")
 
         self.horizontalLayout.addWidget(self.labelTextLastRun)
 
         self.labelTextLastRunWhen = QLabel(self.groupBoxLocateApps)
         self.labelTextLastRunWhen.setObjectName(u"labelTextLastRunWhen")
+        self.labelTextLastRunWhen.setText(u"Never")
         self.labelTextLastRunWhen.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
         self.horizontalLayout.addWidget(self.labelTextLastRunWhen)
 
         self.labelTextVersion = QLabel(self.groupBoxLocateApps)
         self.labelTextVersion.setObjectName(u"labelTextVersion")
+        self.labelTextVersion.setText(u"Version:")
 
         self.horizontalLayout.addWidget(self.labelTextVersion)
 
         self.labelTextVersionYAML = QLabel(self.groupBoxLocateApps)
         self.labelTextVersionYAML.setObjectName(u"labelTextVersionYAML")
+        self.labelTextVersionYAML.setText(u"0.0.0")
 
         self.horizontalLayout.addWidget(self.labelTextVersionYAML)
 
         self.labelTextInstalled = QLabel(self.groupBoxLocateApps)
         self.labelTextInstalled.setObjectName(u"labelTextInstalled")
+        self.labelTextInstalled.setText(u"Installed:")
 
         self.horizontalLayout.addWidget(self.labelTextInstalled)
 
         self.labelTextInstallledQuantity = QLabel(self.groupBoxLocateApps)
         self.labelTextInstallledQuantity.setObjectName(u"labelTextInstallledQuantity")
+        self.labelTextInstallledQuantity.setText(u"None")
 
         self.horizontalLayout.addWidget(self.labelTextInstallledQuantity)
 
@@ -202,10 +232,16 @@ class Ui_Page02Config(object):
         self.verticalLayout_2.addLayout(self.verticalLayoutButtonsApplications)
 
 
-        self.gridLayoutConfigTab.addWidget(self.groupBoxLocateApps, 2, 0, 1, 1)
+        self.gridLayoutPage.addWidget(self.groupBoxLocateApps, 2, 0, 1, 1)
+
+        self.labelCopyright = QLabel(Page02Config)
+        self.labelCopyright.setObjectName(u"labelCopyright")
+        self.labelCopyright.setText(u"<html><head/><body><p align=\"center\"><span style=\" font-size:small; font-weight:700;\">Copyright J2Casa 2023. All Rights Reserved</span></p></body></html>")
+
+        self.gridLayoutPage.addWidget(self.labelCopyright, 3, 0, 1, 1)
 
 
-        self.gridLayout.addLayout(self.gridLayoutConfigTab, 1, 1, 1, 1)
+        self.gridLayout.addLayout(self.gridLayoutPage, 1, 1, 1, 1)
 
 
         self.retranslateUi(Page02Config)
@@ -214,39 +250,8 @@ class Ui_Page02Config(object):
     # setupUi
 
     def retranslateUi(self, Page02Config):
-        Page02Config.setWindowTitle(QCoreApplication.translate("Page02Config", u"Page02Config", None))
-#if QT_CONFIG(tooltip)
-        Page02Config.setToolTip(QCoreApplication.translate("Page02Config", u"Tab Tool Tip", None))
-#endif // QT_CONFIG(tooltip)
-#if QT_CONFIG(statustip)
-        Page02Config.setStatusTip(QCoreApplication.translate("Page02Config", u"Tab Status Tip", None))
-#endif // QT_CONFIG(statustip)
-#if QT_CONFIG(whatsthis)
-        Page02Config.setWhatsThis(QCoreApplication.translate("Page02Config", u"Tab Whats This", None))
-#endif // QT_CONFIG(whatsthis)
-        self.groupBoxProjectFolder.setTitle(QCoreApplication.translate("Page02Config", u"Project Folder Wizard", None))
-        self.labelTextProjectFolder.setText(QCoreApplication.translate("Page02Config", u"Please use the Wizard to locate your Master Project Folder.", None))
-        self.lineEditDisplayProjectFolder.setPlaceholderText(QCoreApplication.translate("Page02Config", u"Master Project Folder Location", None))
-#if QT_CONFIG(tooltip)
-        self.pushButtonWizardProjectFolder.setToolTip(QCoreApplication.translate("Page02Config", u"Location Wizard", None))
-#endif // QT_CONFIG(tooltip)
-#if QT_CONFIG(statustip)
-        self.pushButtonWizardProjectFolder.setStatusTip(QCoreApplication.translate("Page02Config", u"Project Folder Location Wizard", None))
-#endif // QT_CONFIG(statustip)
         self.pushButtonWizardProjectFolder.setText("")
-#if QT_CONFIG(shortcut)
-        self.pushButtonWizardProjectFolder.setShortcut(QCoreApplication.translate("Page02Config", u"Ctrl+Alt+1", None))
-#endif // QT_CONFIG(shortcut)
-        self.labelConfigTitle.setText(QCoreApplication.translate("Page02Config", u"<html><head/><body><h1 style=\" margin-top:18px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:xx-large; font-weight:700;\">Configuration</span></h1></body></html>", None))
-        self.labelConfigCopyright.setText(QCoreApplication.translate("Page02Config", u"<html><head/><body><p align=\"center\"><span style=\" font-size:small; font-weight:700;\">Copyright J2Casa 2023. All Rights Reserved</span></p></body></html>", None))
-        self.groupBoxLocateApps.setTitle(QCoreApplication.translate("Page02Config", u"Applications Locations Wizard", None))
-        self.labelTextApplicationsWizard.setText(QCoreApplication.translate("Page02Config", u"Please locate applications using the Wizard.", None))
-        self.labelTextLastRun.setText(QCoreApplication.translate("Page02Config", u"Last Run:", None))
-        self.labelTextLastRunWhen.setText(QCoreApplication.translate("Page02Config", u"Never", None))
-        self.labelTextVersion.setText(QCoreApplication.translate("Page02Config", u"Version:", None))
-        self.labelTextVersionYAML.setText(QCoreApplication.translate("Page02Config", u"0.0.0", None))
-        self.labelTextInstalled.setText(QCoreApplication.translate("Page02Config", u"Installed:", None))
-        self.labelTextInstallledQuantity.setText(QCoreApplication.translate("Page02Config", u"None", None))
         self.pushButtonWizardApplications.setText("")
+        pass
     # retranslateUi
 

@@ -5,7 +5,7 @@ from PySide6.QtWidgets import (
     QStackedWidget
 )
 
-from pages.page99test_ui import Ui_Page99Test
+from pages.page99.page99test_ui import Ui_Page99Test
 
 
 class Page99Test(QWidget, Ui_Page99Test):

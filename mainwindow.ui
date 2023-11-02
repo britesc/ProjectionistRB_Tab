@@ -47,11 +47,11 @@
              <bool>false</bool>
             </property>
             <property name="text">
-             <string/>
+             <string notr="true"/>
             </property>
             <property name="icon">
-             <iconset>
-              <normaloff>:/Images/png/projectionist.png</normaloff>:/Images/png/projectionist.png</iconset>
+             <iconset resource="resources/png.qrc">
+              <normaloff>:/png/Images/png/projectionist.png</normaloff>:/png/Images/png/projectionist.png</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -82,7 +82,7 @@
              </size>
             </property>
             <property name="text">
-             <string>...</string>
+             <string notr="true">...</string>
             </property>
            </widget>
           </item>
@@ -101,11 +101,11 @@
              </size>
             </property>
             <property name="text">
-             <string/>
+             <string notr="true"/>
             </property>
             <property name="icon">
-             <iconset>
-              <normaloff>:/Images/png/arrowdown.png</normaloff>:/Images/png/arrowdown.png</iconset>
+             <iconset resource="resources/png.qrc">
+              <normaloff>:/png/Images/png/arrowdown.png</normaloff>:/png/Images/png/arrowdown.png</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -133,7 +133,7 @@
              </size>
             </property>
             <property name="text">
-             <string>...</string>
+             <string notr="true">...</string>
             </property>
            </widget>
           </item>
@@ -152,7 +152,7 @@
              </size>
             </property>
             <property name="text">
-             <string>...</string>
+             <string notr="true">...</string>
             </property>
            </widget>
           </item>
@@ -171,11 +171,11 @@
              </size>
             </property>
             <property name="text">
-             <string/>
+             <string notr="true"/>
             </property>
             <property name="icon">
-             <iconset>
-              <normaloff>:/Images/png/help2.png</normaloff>:/Images/png/help2.png</iconset>
+             <iconset resource="resources/buttonsGlassRound.qrc">
+              <normaloff>:/buttons/buttons/glassRound/glassButtonHelp2.png</normaloff>:/buttons/buttons/glassRound/glassButtonHelp2.png</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -203,7 +203,7 @@
              </size>
             </property>
             <property name="text">
-             <string>...</string>
+             <string notr="true">...</string>
             </property>
            </widget>
           </item>
@@ -222,7 +222,7 @@
              </size>
             </property>
             <property name="text">
-             <string>...</string>
+             <string notr="true">...</string>
             </property>
            </widget>
           </item>
@@ -241,7 +241,7 @@
              </size>
             </property>
             <property name="text">
-             <string>...</string>
+             <string notr="true">...</string>
             </property>
            </widget>
           </item>
@@ -260,7 +260,7 @@
              </size>
             </property>
             <property name="text">
-             <string>...</string>
+             <string notr="true">...</string>
             </property>
            </widget>
           </item>
@@ -279,7 +279,7 @@
              </size>
             </property>
             <property name="text">
-             <string>...</string>
+             <string notr="true">...</string>
             </property>
            </widget>
           </item>
@@ -298,7 +298,7 @@
              </size>
             </property>
             <property name="text">
-             <string>...</string>
+             <string notr="true">...</string>
             </property>
            </widget>
           </item>
@@ -317,11 +317,11 @@
              </size>
             </property>
             <property name="text">
-             <string/>
+             <string notr="true"/>
             </property>
             <property name="icon">
-             <iconset>
-              <normaloff>:/Images/png/arrowup.png</normaloff>:/Images/png/arrowup.png</iconset>
+             <iconset resource="resources/png.qrc">
+              <normaloff>:/png/Images/png/arrowup.png</normaloff>:/png/Images/png/arrowup.png</iconset>
             </property>
             <property name="flat">
              <bool>true</bool>

@@ -14,7 +14,7 @@ from PySide6 import (
 )
 from PySide6.QtGui import QActionEvent
 
-from pages.page02config import Ui_Page02Config
+from pages.pageXXconfig import Ui_Page02Config
 
 
 from wizards import (

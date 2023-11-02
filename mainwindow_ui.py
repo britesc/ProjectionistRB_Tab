@@ -19,10 +19,10 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
 from PySide6.QtWidgets import (QApplication, QGridLayout, QHBoxLayout, QLabel,
     QMainWindow, QPushButton, QSizePolicy, QStackedWidget,
     QStatusBar, QTabWidget, QVBoxLayout, QWidget)
-import resources.buttonsGlassRound_rc
-import resources.png_rc
-import resources.readfiles_rc
-import resources.splash_rc
+import buttonsGlassRound_rc
+import png_rc
+import readfiles_rc
+import splash_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -73,7 +73,10 @@ class Ui_MainWindow(object):
         self.pushButton_R0C0.setMinimumSize(QSize(64, 64))
         self.pushButton_R0C0.setMaximumSize(QSize(64, 64))
         self.pushButton_R0C0.setAutoFillBackground(False)
-        self.pushButton_R0C0.setIcon(icon)
+        self.pushButton_R0C0.setText(u"")
+        icon6 = QIcon()
+        icon6.addFile(u":/png/Images/png/projectionist.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButton_R0C0.setIcon(icon6)
         self.pushButton_R0C0.setIconSize(QSize(64, 64))
         self.pushButton_R0C0.setFlat(True)
 
@@ -83,6 +86,7 @@ class Ui_MainWindow(object):
         self.pushButton_R0C2.setObjectName(u"pushButton_R0C2")
         self.pushButton_R0C2.setMinimumSize(QSize(32, 32))
         self.pushButton_R0C2.setMaximumSize(QSize(32, 32))
+        self.pushButton_R0C2.setText(u"...")
 
         self.gridLayout_1_Left.addWidget(self.pushButton_R0C2, 0, 2, 1, 1)
 
@@ -90,9 +94,10 @@ class Ui_MainWindow(object):
         self.pushButton_R0C3.setObjectName(u"pushButton_R0C3")
         self.pushButton_R0C3.setMinimumSize(QSize(32, 32))
         self.pushButton_R0C3.setMaximumSize(QSize(32, 32))
-        icon6 = QIcon()
-        icon6.addFile(u":/Images/png/arrowdown.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton_R0C3.setIcon(icon6)
+        self.pushButton_R0C3.setText(u"")
+        icon7 = QIcon()
+        icon7.addFile(u":/png/Images/png/arrowdown.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButton_R0C3.setIcon(icon7)
         self.pushButton_R0C3.setIconSize(QSize(16, 16))
         self.pushButton_R0C3.setFlat(True)
 
@@ -102,6 +107,7 @@ class Ui_MainWindow(object):
         self.pushButton_R1C2.setObjectName(u"pushButton_R1C2")
         self.pushButton_R1C2.setMinimumSize(QSize(32, 32))
         self.pushButton_R1C2.setMaximumSize(QSize(32, 32))
+        self.pushButton_R1C2.setText(u"...")
 
         self.gridLayout_1_Left.addWidget(self.pushButton_R1C2, 1, 2, 1, 1)
 
@@ -109,6 +115,7 @@ class Ui_MainWindow(object):
         self.pushButton_R1C3.setObjectName(u"pushButton_R1C3")
         self.pushButton_R1C3.setMinimumSize(QSize(32, 32))
         self.pushButton_R1C3.setMaximumSize(QSize(32, 32))
+        self.pushButton_R1C3.setText(u"...")
 
         self.gridLayout_1_Left.addWidget(self.pushButton_R1C3, 1, 3, 1, 1)
 
@@ -116,9 +123,10 @@ class Ui_MainWindow(object):
         self.pushButton_R2C0.setObjectName(u"pushButton_R2C0")
         self.pushButton_R2C0.setMinimumSize(QSize(32, 32))
         self.pushButton_R2C0.setMaximumSize(QSize(32, 32))
-        icon7 = QIcon()
-        icon7.addFile(u":/Images/png/help2.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton_R2C0.setIcon(icon7)
+        self.pushButton_R2C0.setText(u"")
+        icon8 = QIcon()
+        icon8.addFile(u":/buttons/buttons/glassRound/glassButtonHelp2.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButton_R2C0.setIcon(icon8)
         self.pushButton_R2C0.setIconSize(QSize(32, 32))
         self.pushButton_R2C0.setFlat(True)
 
@@ -128,6 +136,7 @@ class Ui_MainWindow(object):
         self.pushButton_R2C1.setObjectName(u"pushButton_R2C1")
         self.pushButton_R2C1.setMinimumSize(QSize(32, 32))
         self.pushButton_R2C1.setMaximumSize(QSize(32, 32))
+        self.pushButton_R2C1.setText(u"...")
 
         self.gridLayout_1_Left.addWidget(self.pushButton_R2C1, 2, 1, 1, 1)
 
@@ -135,6 +144,7 @@ class Ui_MainWindow(object):
         self.pushButton_R2C2.setObjectName(u"pushButton_R2C2")
         self.pushButton_R2C2.setMinimumSize(QSize(32, 32))
         self.pushButton_R2C2.setMaximumSize(QSize(32, 32))
+        self.pushButton_R2C2.setText(u"...")
 
         self.gridLayout_1_Left.addWidget(self.pushButton_R2C2, 2, 2, 1, 1)
 
@@ -142,6 +152,7 @@ class Ui_MainWindow(object):
         self.pushButton_R2C3.setObjectName(u"pushButton_R2C3")
         self.pushButton_R2C3.setMinimumSize(QSize(32, 32))
         self.pushButton_R2C3.setMaximumSize(QSize(32, 32))
+        self.pushButton_R2C3.setText(u"...")
 
         self.gridLayout_1_Left.addWidget(self.pushButton_R2C3, 2, 3, 1, 1)
 
@@ -149,6 +160,7 @@ class Ui_MainWindow(object):
         self.pushButton_R3C0.setObjectName(u"pushButton_R3C0")
         self.pushButton_R3C0.setMinimumSize(QSize(32, 32))
         self.pushButton_R3C0.setMaximumSize(QSize(32, 32))
+        self.pushButton_R3C0.setText(u"...")
 
         self.gridLayout_1_Left.addWidget(self.pushButton_R3C0, 3, 0, 1, 1)
 
@@ -156,6 +168,7 @@ class Ui_MainWindow(object):
         self.pushButton_R3C1.setObjectName(u"pushButton_R3C1")
         self.pushButton_R3C1.setMinimumSize(QSize(32, 32))
         self.pushButton_R3C1.setMaximumSize(QSize(32, 32))
+        self.pushButton_R3C1.setText(u"...")
 
         self.gridLayout_1_Left.addWidget(self.pushButton_R3C1, 3, 1, 1, 1)
 
@@ -163,6 +176,7 @@ class Ui_MainWindow(object):
         self.pushButton_R3C2.setObjectName(u"pushButton_R3C2")
         self.pushButton_R3C2.setMinimumSize(QSize(32, 32))
         self.pushButton_R3C2.setMaximumSize(QSize(32, 32))
+        self.pushButton_R3C2.setText(u"...")
 
         self.gridLayout_1_Left.addWidget(self.pushButton_R3C2, 3, 2, 1, 1)
 
@@ -170,9 +184,10 @@ class Ui_MainWindow(object):
         self.pushButton_R3C3.setObjectName(u"pushButton_R3C3")
         self.pushButton_R3C3.setMinimumSize(QSize(32, 32))
         self.pushButton_R3C3.setMaximumSize(QSize(32, 32))
-        icon8 = QIcon()
-        icon8.addFile(u":/Images/png/arrowup.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton_R3C3.setIcon(icon8)
+        self.pushButton_R3C3.setText(u"")
+        icon9 = QIcon()
+        icon9.addFile(u":/png/Images/png/arrowup.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButton_R3C3.setIcon(icon9)
         self.pushButton_R3C3.setFlat(True)
 
         self.gridLayout_1_Left.addWidget(self.pushButton_R3C3, 3, 3, 1, 1)
@@ -202,7 +217,7 @@ class Ui_MainWindow(object):
         self.page.setObjectName(u"page")
         self.label = QLabel(self.page)
         self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(40, 60, 501, 171))
+        self.label.setGeometry(QRect(0, 0, 501, 171))
         font1 = QFont()
         font1.setPointSize(72)
         font1.setBold(True)
@@ -263,18 +278,5 @@ class Ui_MainWindow(object):
 #if QT_CONFIG(tooltip)
         self.action_Help_Master.setToolTip(QCoreApplication.translate("MainWindow", u"Open Help...", None))
 #endif // QT_CONFIG(tooltip)
-        self.pushButton_R0C0.setText("")
-        self.pushButton_R0C2.setText(QCoreApplication.translate("MainWindow", u"...", None))
-        self.pushButton_R0C3.setText("")
-        self.pushButton_R1C2.setText(QCoreApplication.translate("MainWindow", u"...", None))
-        self.pushButton_R1C3.setText(QCoreApplication.translate("MainWindow", u"...", None))
-        self.pushButton_R2C0.setText("")
-        self.pushButton_R2C1.setText(QCoreApplication.translate("MainWindow", u"...", None))
-        self.pushButton_R2C2.setText(QCoreApplication.translate("MainWindow", u"...", None))
-        self.pushButton_R2C3.setText(QCoreApplication.translate("MainWindow", u"...", None))
-        self.pushButton_R3C0.setText(QCoreApplication.translate("MainWindow", u"...", None))
-        self.pushButton_R3C1.setText(QCoreApplication.translate("MainWindow", u"...", None))
-        self.pushButton_R3C2.setText(QCoreApplication.translate("MainWindow", u"...", None))
-        self.pushButton_R3C3.setText("")
     # retranslateUi
 

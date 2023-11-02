@@ -21,14 +21,14 @@ from PySide6.QtGui import (
     QIcon,
 )
 
-from PySide6.QtCore import (
-    QCoreApplication,
-)
+# from PySide6.QtCore import (
+#     QCoreApplication,
+# )
 
-from PySide6.QtWidgets import (
-    QMainWindow,
-    QPushButton
-)
+# from PySide6.QtWidgets import (
+#     QMainWindow,
+#     QPushButton
+# )
 
 from classes import (
     p2_splash,
@@ -44,18 +44,17 @@ from classes.p2_db import(
 
 from mainwindow import MainWindow
 
-from resources import buttonsGlassRound_rc  # noqa: F401
+import buttonsGlassRound_rc  # noqa: F401
 
 def setup_app() -> None:
-    """Set the Application Information."""
+    """ Set the Application Information. """
     QtCore.QCoreApplication.setOrganizationName("J2Casa")
     QtCore.QCoreApplication.setOrganizationDomain("j2casa.com")
     QtCore.QCoreApplication.setApplicationName("Projectionist")
     QtCore.QCoreApplication.setApplicationVersion("3.0.0.dev")
 
-def main():    # sourcery skip: remove-pass-body, remove-redundant-pass, swap-if-else-branches  # noqa: E501
-    # trunk-ignore(ruff/D401)
-    """Main Function to get us going."""
+def main() -> None:  # sourcery skip: remove-pass-body, remove-redundant-pass, swap-if-else-branches
+    """ Start the Main Function to get us going. """
     try:
         app = QApplication(sys.argv)
         window = MainWindow(app)
@@ -89,7 +88,7 @@ def main():    # sourcery skip: remove-pass-body, remove-redundant-pass, swap-if
 
             app.setQuitOnLastWindowClosed(False)
 
-            tray_icon = QIcon(":/buttons/glassRound/glassButtonProjectionist.png")  # noqa: E501
+            tray_icon = QIcon(":buttons/buttons/glassRound/glassButtonProjectionist.png")  # noqa: E501
 
             tray = QSystemTrayIcon()
             tray.setIcon(tray_icon)
@@ -101,12 +100,12 @@ def main():    # sourcery skip: remove-pass-body, remove-redundant-pass, swap-if
             action1.triggered.connect(window.showNormal) # type: ignore
             action1.triggered.connect(window.activateWindow) # type: ignore
             action1.triggered.connect(window.raise_) # type: ignore
-            action1.setIcon(QIcon(u":/buttons/glassRound/glassButtonProjectionist.png"))
+            action1.setIcon(QIcon(u":buttons/buttons/glassRound/glassButtonShow.png"))
             tray_menu.addAction(action1)
 
-            action2 = QAction("Quit")
+            action2 = QAction("Exit")
             action2.triggered.connect(app.quit) # type: ignore
-            action2.setIcon(QIcon(":/buttons/glassRound/glassButtonQuit.png"))
+            action2.setIcon(QIcon(":buttons/buttons/glassRound/glassButtonExit.png"))
             tray_menu.addAction(action2)
 
             tray.setContextMenu(tray_menu)
@@ -116,7 +115,7 @@ def main():    # sourcery skip: remove-pass-body, remove-redundant-pass, swap-if
             # qdarktheme.setup_theme(p_settings.get_theme())
         window.show()
         if do_splash:
-            use_splash.hide(window)
+            use_splash.hide(window) # type: ignore
 
     except Exception as err:
         print("Unfortunately the Application has encountered an error \
@@ -126,7 +125,7 @@ and is unable to continue.")
         traceback.print_exception() # type: ignore
 
     finally:
-        print(f"window geometry 2. {window.geometry().getRect()}")
+        print(f"window geometry 2. {window.geometry().getRect()}") # type: ignore
         sys.exit(app.exec()) # type: ignore
 
 

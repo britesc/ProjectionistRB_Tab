@@ -15,6 +15,7 @@ from PySide6.QtCore import (
 )
 
 from PySide6.QtGui import (
+    QWindow,
     QAction,
     QIcon,
     QPixmap,
@@ -48,21 +49,24 @@ from classes import (
     p2_database
 )
 
-from pages import (
-    page01intro,
-    page99test
-    # page02config
-)
+from pages.page01 import page01intro
+from pages.page02 import page02config
+from pages.page99 import page99test
+
 
 from mainwindow_ui import Ui_MainWindow
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
-    """The MainWindow Class."""
+    """ The MainWindow Class. """
     def __init__(self, app) -> None:
         super().__init__()
         self.setupUi(self)  # type: ignore
         self.app = app  # declare an app member
+
+        self.setMinimumSize(600, 500)
+        self.setMaximumSize(600,500)
+
 
         self.p_database_name = f"{QtCore.QCoreApplication.applicationName()}.db"
         print(f"Database Name 3 = {self.p_database_name}")
@@ -76,12 +80,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.page01intro  = page01intro.Page01Intro()
         self.page99test   = page99test.Page99Test()
+        self.page02config = page02config.Page02Config()
         # self.page02config = page02config.Page02Config()
 
         self.stackedWidget.addWidget(self.page01intro) # index 1
         self.stackedWidget.addWidget(self.page99test) # index 2
-
-        self.stackedWidget.setCurrentIndex(2)
+        self.stackedWidget.addWidget(self.page02config) # index 3
+        self.stackedWidget.setCurrentIndex(3)
 
         
         

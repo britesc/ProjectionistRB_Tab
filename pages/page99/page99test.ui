@@ -80,6 +80,11 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources/buttonsGlassRound.qrc"/>
+  <include location="resources/png.qrc"/>
+  <include location="resources/readfiles.qrc"/>
+  <include location="resources/splash.qrc"/>
+ </resources>
  <connections/>
 </ui>
