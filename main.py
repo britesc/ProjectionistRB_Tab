@@ -30,6 +30,11 @@ from PySide6.QtGui import (
 #     QPushButton
 # )
 
+from PySide6.QtCore import (
+    Slot,
+    Signal
+)
+
 from classes import (
     p2_splash,
     p2_logging
@@ -53,7 +58,8 @@ def setup_app() -> None:
     QtCore.QCoreApplication.setApplicationName("Projectionist")
     QtCore.QCoreApplication.setApplicationVersion("3.0.0.dev")
 
-def main() -> None:  # sourcery skip: remove-pass-body, remove-redundant-pass, swap-if-else-branches
+
+def main() -> None:  # sourcery skip: extract-method, remove-pass-body, remove-redundant-pass, swap-if-else-branches
     """ Start the Main Function to get us going. """
     try:
         app = QApplication(sys.argv)
@@ -100,13 +106,21 @@ def main() -> None:  # sourcery skip: remove-pass-body, remove-redundant-pass, s
             action1.triggered.connect(window.showNormal) # type: ignore
             action1.triggered.connect(window.activateWindow) # type: ignore
             action1.triggered.connect(window.raise_) # type: ignore
+            action1.triggered.connect(action1_triggered) # type: ignore
             action1.setIcon(QIcon(u":buttons/buttons/glassRound/glassButtonShow.png"))
             tray_menu.addAction(action1)
 
-            action2 = QAction("Exit")
-            action2.triggered.connect(app.quit) # type: ignore
-            action2.setIcon(QIcon(":buttons/buttons/glassRound/glassButtonExit.png"))
+            action2 = QAction("Hide")
+            action2.triggered.connect(window.hide) # type: ignore
+            action1.triggered.connect(action2_triggered) # type: ignore
+            action2.setIcon(QIcon(u":buttons/buttons/glassRound/glassButtonHide.png"))
+            action2.setVisible(False)
             tray_menu.addAction(action2)
+
+            action3 = QAction("Quit")
+            action3.triggered.connect(app.quit) # type: ignore
+            action3.setIcon(QIcon(":buttons/buttons/glassRound/glassButtonExit.png"))
+            tray_menu.addAction(action3)
 
             tray.setContextMenu(tray_menu)
 
@@ -128,10 +142,23 @@ and is unable to continue.")
         print(f"window geometry 2. {window.geometry().getRect()}") # type: ignore
         sys.exit(app.exec()) # type: ignore
 
+@Slot()
+def action1_triggered() -> None:
+    """ Do Action1 Triggers. """
+    show_hide_clicked.emit(3) # type: ignore
+    print("Action1 Triggers")
+
+@Slot()
+def action2_triggered() -> None:
+    """ Do Action1 Triggers. """
+    show_hide_clicked.emit(4) # type: ignore
+    print("Action2 Triggers")
+
 
 
 if __name__ == '__main__':
     """ Where it all starts from. """
     setup_app()
+    show_hide_clicked = Signal(int)
     main()
 

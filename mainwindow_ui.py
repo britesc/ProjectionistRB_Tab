@@ -16,7 +16,7 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
-from PySide6.QtWidgets import (QApplication, QGridLayout, QHBoxLayout, QLabel,
+from PySide6.QtWidgets import (QApplication, QGridLayout, QHBoxLayout, QLayout,
     QMainWindow, QPushButton, QSizePolicy, QStackedWidget,
     QStatusBar, QTabWidget, QVBoxLayout, QWidget)
 import buttonsGlassRound_rc
@@ -32,6 +32,18 @@ class Ui_MainWindow(object):
         icon = QIcon()
         icon.addFile(u":/Images/png/projectionist.png", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
+#if QT_CONFIG(tooltip)
+        MainWindow.setToolTip(u"")
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(statustip)
+        MainWindow.setStatusTip(u"")
+#endif // QT_CONFIG(statustip)
+#if QT_CONFIG(whatsthis)
+        MainWindow.setWhatsThis(u"")
+#endif // QT_CONFIG(whatsthis)
+#if QT_CONFIG(accessibility)
+        MainWindow.setAccessibleName(u"")
+#endif // QT_CONFIG(accessibility)
         self.action_New = QAction(MainWindow)
         self.action_New.setObjectName(u"action_New")
         icon1 = QIcon()
@@ -61,8 +73,10 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout_2 = QVBoxLayout(self.centralwidget)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.verticalLayout_2.setSizeConstraint(QLayout.SetMinimumSize)
         self.verticalLayout_1_Top = QVBoxLayout()
         self.verticalLayout_1_Top.setObjectName(u"verticalLayout_1_Top")
+        self.verticalLayout_1_Top.setSizeConstraint(QLayout.SetMinAndMaxSize)
         self.horizontalLayout_RibbonBar = QHBoxLayout()
         self.horizontalLayout_RibbonBar.setObjectName(u"horizontalLayout_RibbonBar")
         self.gridLayout_1_Left = QGridLayout()
@@ -210,29 +224,18 @@ class Ui_MainWindow(object):
         self.verticalLayout_2_Bottom.setObjectName(u"verticalLayout_2_Bottom")
         self.stackedWidget = QStackedWidget(self.centralwidget)
         self.stackedWidget.setObjectName(u"stackedWidget")
+        self.stackedWidget.setBaseSize(QSize(0, 500))
         font = QFont()
         font.setPointSize(48)
         self.stackedWidget.setFont(font)
-        self.page = QWidget()
-        self.page.setObjectName(u"page")
-        self.label = QLabel(self.page)
-        self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(0, 0, 501, 171))
-        font1 = QFont()
-        font1.setPointSize(72)
-        font1.setBold(True)
-        self.label.setFont(font1)
-        self.label.setText(u"BIG LABEL")
-        self.label.setAlignment(Qt.AlignCenter)
-        self.stackedWidget.addWidget(self.page)
 
         self.verticalLayout_2_Bottom.addWidget(self.stackedWidget)
 
 
         self.verticalLayout_2.addLayout(self.verticalLayout_2_Bottom)
 
-        self.verticalLayout_2.setStretch(0, 2)
-        self.verticalLayout_2.setStretch(1, 999)
+        self.verticalLayout_2.setStretch(0, 1)
+        self.verticalLayout_2.setStretch(1, 99)
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")

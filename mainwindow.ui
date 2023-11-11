@@ -18,10 +18,28 @@
    <iconset>
     <normaloff>:/Images/png/projectionist.png</normaloff>:/Images/png/projectionist.png</iconset>
   </property>
+  <property name="toolTip">
+   <string notr="true"/>
+  </property>
+  <property name="statusTip">
+   <string notr="true"/>
+  </property>
+  <property name="whatsThis">
+   <string notr="true"/>
+  </property>
+  <property name="accessibleName">
+   <string notr="true"/>
+  </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout_2" stretch="2,999">
+   <layout class="QVBoxLayout" name="verticalLayout_2" stretch="1,99">
+    <property name="sizeConstraint">
+     <enum>QLayout::SetMinimumSize</enum>
+    </property>
     <item>
      <layout class="QVBoxLayout" name="verticalLayout_1_Top">
+      <property name="sizeConstraint">
+       <enum>QLayout::SetMinAndMaxSize</enum>
+      </property>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_RibbonBar" stretch="0,0">
         <item>
@@ -345,35 +363,17 @@
      <layout class="QVBoxLayout" name="verticalLayout_2_Bottom">
       <item>
        <widget class="QStackedWidget" name="stackedWidget">
+        <property name="baseSize">
+         <size>
+          <width>0</width>
+          <height>500</height>
+         </size>
+        </property>
         <property name="font">
          <font>
           <pointsize>48</pointsize>
          </font>
         </property>
-        <widget class="QWidget" name="page">
-         <widget class="QLabel" name="label">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>501</width>
-            <height>171</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>72</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">BIG LABEL</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </widget>
        </widget>
       </item>
      </layout>

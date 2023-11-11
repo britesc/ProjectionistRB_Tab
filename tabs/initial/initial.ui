@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>tab_initial_setup</class>
+ <widget class="QWidget" name="tab_initial_setup">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>235</width>
+    <height>110</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string notr="true">tab_initial_setup</string>
+  </property>
+  <widget class="QGroupBox" name="groupBox_exit">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>81</width>
+     <height>102</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string notr="true"/>
+   </property>
+   <property name="statusTip">
+    <string notr="true"/>
+   </property>
+   <property name="whatsThis">
+    <string notr="true"/>
+   </property>
+   <property name="accessibleName">
+    <string notr="true"/>
+   </property>
+   <property name="title">
+    <string notr="true"/>
+   </property>
+   <widget class="QWidget" name="gridLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>67</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_exit">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <item row="1" column="0" alignment="Qt::AlignHCenter">
+      <widget class="QPushButton" name="pushButton_title_exit">
+       <property name="minimumSize">
+        <size>
+         <width>65</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="toolTip">
+        <string notr="true">Exit</string>
+       </property>
+       <property name="statusTip">
+        <string notr="true">Exit</string>
+       </property>
+       <property name="whatsThis">
+        <string notr="true">Exit</string>
+       </property>
+       <property name="accessibleName">
+        <string notr="true"/>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background:rgb(165, 29, 45)</string>
+       </property>
+       <property name="text">
+        <string notr="true">Exit</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../../resources/buttonsGlassRound.qrc">
+         <normaloff>:/buttons/buttons/glassRound/glassButtonExit.png</normaloff>:/buttons/buttons/glassRound/glassButtonExit.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0" alignment="Qt::AlignHCenter">
+      <widget class="QPushButton" name="pushButtonExit">
+       <property name="minimumSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="toolTip">
+        <string notr="true">Exit Application</string>
+       </property>
+       <property name="statusTip">
+        <string notr="true">Exit Application</string>
+       </property>
+       <property name="whatsThis">
+        <string notr="true">Exit Application</string>
+       </property>
+       <property name="accessibleName">
+        <string notr="true"/>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
+       <property name="text">
+        <string notr="true"/>
+       </property>
+       <property name="icon">
+        <iconset resource="../../resources/buttonsGlassRound.qrc">
+         <normaloff>:/buttons/buttons/glassRound/glassButtonExit.png</normaloff>:/buttons/buttons/glassRound/glassButtonExit.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
+       <property name="shortcut">
+        <string notr="true"/>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_navigation">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>0</y>
+     <width>151</width>
+     <height>102</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string notr="true"/>
+   </property>
+   <property name="statusTip">
+    <string notr="true"/>
+   </property>
+   <property name="whatsThis">
+    <string notr="true"/>
+   </property>
+   <property name="accessibleName">
+    <string notr="true"/>
+   </property>
+   <property name="title">
+    <string notr="true"/>
+   </property>
+   <widget class="QWidget" name="gridLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>131</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_navigation">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <item row="0" column="0">
+      <widget class="QPushButton" name="pushButton_navigation_previous">
+       <property name="minimumSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="toolTip">
+        <string notr="true">Previous Page</string>
+       </property>
+       <property name="statusTip">
+        <string notr="true">Previous Page</string>
+       </property>
+       <property name="whatsThis">
+        <string notr="true">Previous Page</string>
+       </property>
+       <property name="accessibleName">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string notr="true"/>
+       </property>
+       <property name="icon">
+        <iconset resource="../../resources/buttonsGlassRound.qrc">
+         <normaloff>:/buttons/buttons/glassRound/glassButtonPrevious.png</normaloff>:/buttons/buttons/glassRound/glassButtonPrevious.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
+       <property name="shortcut">
+        <string notr="true"/>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QPushButton" name="pushButton_navigation_next">
+       <property name="minimumSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="toolTip">
+        <string notr="true">Next Page</string>
+       </property>
+       <property name="statusTip">
+        <string notr="true">Next Page</string>
+       </property>
+       <property name="whatsThis">
+        <string notr="true">Next Page</string>
+       </property>
+       <property name="accessibleName">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string notr="true"/>
+       </property>
+       <property name="icon">
+        <iconset resource="../../resources/buttonsGlassRound.qrc">
+         <normaloff>:/buttons/buttons/glassRound/glassButtonNext.png</normaloff>:/buttons/buttons/glassRound/glassButtonNext.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0" colspan="2" alignment="Qt::AlignHCenter">
+      <widget class="QPushButton" name="pushButton_title_navigation">
+       <property name="minimumSize">
+        <size>
+         <width>65</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="toolTip">
+        <string notr="true">Exit</string>
+       </property>
+       <property name="statusTip">
+        <string notr="true">Exit</string>
+       </property>
+       <property name="whatsThis">
+        <string notr="true">Exit</string>
+       </property>
+       <property name="accessibleName">
+        <string notr="true"/>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background:rgb(38, 162, 105)</string>
+       </property>
+       <property name="text">
+        <string notr="true">Navigation</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../../resources/buttonsGlassRound.qrc">
+         <normaloff>:/buttons/buttons/glassRound/glassButtonExit.png</normaloff>:/buttons/buttons/glassRound/glassButtonExit.png</iconset>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../../resources/buttonsGlassRound.qrc"/>
+ </resources>
+ <connections/>
+</ui>

@@ -1,5 +1,8 @@
 <RCC>
   <qresource prefix="/buttons">
+    <file>buttonsGlassRound.qrc</file>
+    <file>buttons/glassRound/glassButtonNext.png</file>
+    <file>buttons/glassRound/glassButtonPrevious.png</file>
     <file>buttons/glassRound/glassButton.png</file>
     <file>buttons/glassRound/glassButtonAbort.png</file>
     <file>buttons/glassRound/glassButtonAbout.png</file>

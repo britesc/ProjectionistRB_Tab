@@ -51,7 +51,7 @@ class Ui_Page01Intro(object):
         sizePolicy1.setHeightForWidth(self.labelDetails.sizePolicy().hasHeightForWidth())
         self.labelDetails.setSizePolicy(sizePolicy1)
         self.labelDetails.setText(u"<html><head/><body><h3 style=\" margin-top:14px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:large; font-weight:700;\">Welcome to Projectionist.</span></h3><h4 style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:medium; font-weight:700;\">In order to make use of this excellent application, it is first necessary to configure it.</span></h4><h4 style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:medium; font-weight:700;\">It may also be necessary to add applications to the OS $PATH variable to ensure that they can be found and utilised correctly. This should be fairly easy to do.</span></h4><h4 style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:medium; font-weight"
-                        ":700;\">Once you are ready to commence the configuration, please click on the Configuration Tab and follow the instructions.</span></h4><h4 style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:medium; font-weight:700;\">This application can been set to operate in a minimum size of 630 x 500, but can operate just as well or better in large sizes, imcluding full screen.</span></h4></body></html>")
+                        ":700;\">Once you are ready to commence the configuration, please click on the Configuration Tab and follow the instructions.</span></h4><h4 style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:medium; font-weight:700;\">This application can been set to operate in a minimum size of 630 x 500, but can operate just as well or better in large sizes, including full screen.</span></h4></body></html>")
         self.labelDetails.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
         self.labelDetails.setWordWrap(True)
         self.labelDetails.setMargin(5)
@@ -64,7 +64,7 @@ class Ui_Page01Intro(object):
         self.labelCopyright.setText(u"<html><head/><body><p align=\"center\" valign=\"bottom\"><span style=\" font-size:small; font-weight:700;\">Copyright J2Casa 2023. All Rights Reserved</span></p></body></html>")
         self.labelCopyright.setAlignment(Qt.AlignBottom|Qt.AlignLeading|Qt.AlignLeft)
 
-        self.gridLayoutPage.addWidget(self.labelCopyright, 2, 0, 1, 1)
+        self.gridLayoutPage.addWidget(self.labelCopyright, 2, 0, 1, 1, Qt.AlignBottom)
 
 
         self.gridLayout.addLayout(self.gridLayoutPage, 1, 1, 1, 1)

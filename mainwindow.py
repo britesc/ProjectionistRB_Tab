@@ -40,10 +40,9 @@ from PySide6.QtWidgets import (
 )
 
 from PySide6.QtCore import (
-    Qt,
-    QEvent
+    Slot,
+    Signal
 )
-
 
 from classes import (
     p2_database
@@ -51,22 +50,24 @@ from classes import (
 
 from pages.page01 import page01intro
 from pages.page02 import page02config
-from pages.page99 import page99test
+# from pages.page99 import page99test
 
+from tabs.initial import initial
 
 from mainwindow_ui import Ui_MainWindow
 
+# import pprint
 
 class MainWindow(QMainWindow, Ui_MainWindow):
+
     """ The MainWindow Class. """
     def __init__(self, app) -> None:
         super().__init__()
         self.setupUi(self)  # type: ignore
         self.app = app  # declare an app member
 
-        self.setMinimumSize(600, 500)
-        self.setMaximumSize(600,500)
-
+        self.setMinimumSize(600, 510)
+        self.setMaximumSize(600,510)
 
         self.p_database_name = f"{QtCore.QCoreApplication.applicationName()}.db"
         print(f"Database Name 3 = {self.p_database_name}")
@@ -79,19 +80,20 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.pushButton_R0C0.setMenu(self.menu)
 
         self.page01intro  = page01intro.Page01Intro()
-        self.page99test   = page99test.Page99Test()
+        # self.page99test   = page99test.Page99Test()
         self.page02config = page02config.Page02Config()
-        # self.page02config = page02config.Page02Config()
 
         self.stackedWidget.addWidget(self.page01intro) # index 1
-        self.stackedWidget.addWidget(self.page99test) # index 2
+        # self.stackedWidget.addWidget(self.page99test) # index 2
         self.stackedWidget.addWidget(self.page02config) # index 3
-        self.stackedWidget.setCurrentIndex(3)
+        self.stackedWidget.setCurrentIndex(0)
+        print(f"Number of Pages {self.stackedWidget.count()}")
+        print(f"Current Page {self.stackedWidget.currentIndex()}")
 
+        initial_tab_setup = initial.tab_initial_setup()
+        self.tabWidget_Ribbon_Bar.addTab(initial_tab_setup, "Initial Setup 1")
+        initial_tab_setup.signal_pb_clicked.connect(self.signals_received)
         
-        
-
-
     def R0C0_Context_Menu(self) -> None:
         """Create the Context Menu."""
         self.menu = QMenu()
@@ -126,3 +128,47 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def R0C0_actionQuit(self) -> None:
         print("Action Quit Clicked")
 
+    def initial_page_previous(self) -> None:
+        """ Go to the next Stacked Widget Page. """
+
+        self.current = self.stackedWidget.currentIndex()
+        self.maximum = self.stackedWidget.count() - 1
+
+        # print("initial_page_previous:")
+        # print(f"self.current {self.current}")
+        # print(f"self.maximum {self.maximum}")
+        # print("")
+
+        if self.current >  0:
+            self.stackedWidget.setCurrentIndex(self.current - 1)
+
+    def initial_page_next(self) -> None:
+        """ Go to the next Stacked Widget Page. """
+
+        self.current = self.stackedWidget.currentIndex()
+        self.maximum = self.stackedWidget.count() - 1
+
+        # print("initial_page_next:")
+        # print(f"self.current {self.current}")
+        # print(f"self.maximum {self.maximum}")
+        # print("")
+
+        if self.current <  self.maximum:
+            self.stackedWidget.setCurrentIndex(self.current + 1)
+
+
+
+    @Slot()
+    def signals_received(self, sig) -> None:
+        # print(f"Signal Received {sig}")
+        match sig:
+            case 10:
+                self.hide()
+            case 64:
+                # print("Previous - Number 64 Received")
+                self.initial_page_previous()
+            case 65:
+                # print("Next - Number 65 Received")
+                self.initial_page_next()
+            case _:
+                pass
