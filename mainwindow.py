@@ -15,6 +15,8 @@ from PySide6.QtCore import (
 )
 
 from PySide6.QtGui import (
+    QHideEvent,
+    QShowEvent,
     QWindow,
     QAction,
     QIcon,
@@ -48,6 +50,9 @@ from classes import (
     p2_database
 )
 
+from classes.p2_systray import p2_systray
+# from main import main
+
 from pages.page01 import page01intro
 from pages.page02 import page02config
 # from pages.page99 import page99test
@@ -56,19 +61,19 @@ from tabs.initial import initial
 
 from mainwindow_ui import Ui_MainWindow
 
-# import pprint
+import pprint
 
 class MainWindow(QMainWindow, Ui_MainWindow):
-
     """ The MainWindow Class. """
     def __init__(self, app) -> None:
         super().__init__()
         self.setupUi(self)  # type: ignore
         self.app = app  # declare an app member
-
+        
+        
         self.setMinimumSize(600, 510)
         self.setMaximumSize(600,510)
-
+        
         self.p_database_name = f"{QtCore.QCoreApplication.applicationName()}.db"
         print(f"Database Name 3 = {self.p_database_name}")
         self.p_database = p2_database.ProjDatabase(self.p_database_name)
@@ -93,6 +98,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         initial_tab_setup = initial.tab_initial_setup()
         self.tabWidget_Ribbon_Bar.addTab(initial_tab_setup, "Initial Setup 1")
         initial_tab_setup.signal_pb_clicked.connect(self.signals_received)
+        
+        self.systray = p2_systray.ProjSysTray(app)
         
     def R0C0_Context_Menu(self) -> None:
         """Create the Context Menu."""
@@ -172,3 +179,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self.initial_page_next()
             case _:
                 pass
+
+    def hideEvent(self, event: QHideEvent) -> None:
+        print("Hide Event Triggered")
+        self.systray.window_hide()
+        return super().hideEvent(event)
+    
+    def showEvent(self, event: QShowEvent) -> None:
+        print("Show Event Triggered")
+        self.systray.window_show()      
+        return super().showEvent(event)
+    

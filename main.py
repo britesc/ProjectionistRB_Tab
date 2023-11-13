@@ -47,6 +47,8 @@ from classes.p2_db import(
     p2_db_theme
 )
 
+import pprint
+
 from mainwindow import MainWindow
 
 import buttonsGlassRound_rc  # noqa: F401
@@ -88,43 +90,41 @@ def main() -> None:  # sourcery skip: extract-method, remove-pass-body, remove-r
             use_logging.log_entry("INFO", "Logging Started")
         del logging_db
 
-        if not QSystemTrayIcon.isSystemTrayAvailable():
-            pass
-        else:
+        # if not QSystemTrayIcon.isSystemTrayAvailable():
+        #     pass
+        # else:
 
-            app.setQuitOnLastWindowClosed(False)
+        #     app.setQuitOnLastWindowClosed(False)
 
-            tray_icon = QIcon(":buttons/buttons/glassRound/glassButtonProjectionist.png")  # noqa: E501
+        #     tray_icon = QIcon(":buttons/buttons/glassRound/glassButtonProjectionist.png")  # noqa: E501
 
-            tray = QSystemTrayIcon()
-            tray.setIcon(tray_icon)
-            tray.setVisible(True)
+        #     tray = QSystemTrayIcon()
+        #     tray.setIcon(tray_icon)
+        #     tray.setVisible(True)
 
 
-            tray_menu = QMenu()
-            action1 = QAction("Show")
-            action1.triggered.connect(window.showNormal) # type: ignore
-            action1.triggered.connect(window.activateWindow) # type: ignore
-            action1.triggered.connect(window.raise_) # type: ignore
-            action1.triggered.connect(action1_triggered) # type: ignore
-            action1.setIcon(QIcon(u":buttons/buttons/glassRound/glassButtonShow.png"))
-            tray_menu.addAction(action1)
+        #     tray_menu = QMenu()
+        #     action1 = QAction("Show")
+        #     action1.triggered.connect(window.showNormal) # type: ignore
+        #     action1.triggered.connect(window.activateWindow) # type: ignore
+        #     action1.triggered.connect(window.raise_) # type: ignore
+        #     action1.setIcon(QIcon(u":buttons/buttons/glassRound/glassButtonShow.png"))
+        #     tray_menu.addAction(action1)
 
-            action2 = QAction("Hide")
-            action2.triggered.connect(window.hide) # type: ignore
-            action1.triggered.connect(action2_triggered) # type: ignore
-            action2.setIcon(QIcon(u":buttons/buttons/glassRound/glassButtonHide.png"))
-            action2.setVisible(False)
-            tray_menu.addAction(action2)
+        #     action2 = QAction("Hide")
+        #     action2.triggered.connect(window.hide) # type: ignore
+        #     action2.setIcon(QIcon(u":buttons/buttons/glassRound/glassButtonHide.png"))
+        #     action2.setVisible(False)
+        #     tray_menu.addAction(action2)
 
-            action3 = QAction("Quit")
-            action3.triggered.connect(app.quit) # type: ignore
-            action3.setIcon(QIcon(":buttons/buttons/glassRound/glassButtonExit.png"))
-            tray_menu.addAction(action3)
+        #     action3 = QAction("Quit")
+        #     action3.triggered.connect(app.quit) # type: ignore
+        #     action3.setIcon(QIcon(":buttons/buttons/glassRound/glassButtonExit.png"))
+        #     tray_menu.addAction(action3)
 
-            tray.setContextMenu(tray_menu)
+        #     tray.setContextMenu(tray_menu)
 
-            print(f"window geometry 1. {window.geometry().getRect()}")
+        print(f"window geometry 1. {window.geometry().getRect()}")
 
             # qdarktheme.setup_theme(p_settings.get_theme())
         window.show()
@@ -142,23 +142,8 @@ and is unable to continue.")
         print(f"window geometry 2. {window.geometry().getRect()}") # type: ignore
         sys.exit(app.exec()) # type: ignore
 
-@Slot()
-def action1_triggered() -> None:
-    """ Do Action1 Triggers. """
-    show_hide_clicked.emit(3) # type: ignore
-    print("Action1 Triggers")
-
-@Slot()
-def action2_triggered() -> None:
-    """ Do Action1 Triggers. """
-    show_hide_clicked.emit(4) # type: ignore
-    print("Action2 Triggers")
-
-
-
 if __name__ == '__main__':
     """ Where it all starts from. """
     setup_app()
-    show_hide_clicked = Signal(int)
     main()
 
