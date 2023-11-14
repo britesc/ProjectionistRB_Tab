@@ -27,7 +27,7 @@ class tab_initial_setup(QWidget, initial_ui.Ui_tab_initial_setup):
 
     @Slot()
     def button_pushed_exit(self) -> None:
-        print("Quit Clicked")  
+        # print("Quit Clicked")  
         # sys.exit()
         self.signal_pb_clicked.emit(10)
 

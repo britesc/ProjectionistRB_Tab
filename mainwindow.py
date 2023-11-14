@@ -61,7 +61,7 @@ from tabs.initial import initial
 
 from mainwindow_ui import Ui_MainWindow
 
-import pprint
+# import pprint
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     """ The MainWindow Class. """
@@ -70,12 +70,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.setupUi(self)  # type: ignore
         self.app = app  # declare an app member
         
-        
+        # self.setGeometry()
         self.setMinimumSize(600, 510)
         self.setMaximumSize(600,510)
         
         self.p_database_name = f"{QtCore.QCoreApplication.applicationName()}.db"
-        print(f"Database Name 3 = {self.p_database_name}")
+        # print(f"Database Name 3 = {self.p_database_name}")
         self.p_database = p2_database.ProjDatabase(self.p_database_name)
         self.p_database.check_database_exists()
         # self.current_theme = self.p_database.get_theme()
@@ -92,8 +92,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # self.stackedWidget.addWidget(self.page99test) # index 2
         self.stackedWidget.addWidget(self.page02config) # index 3
         self.stackedWidget.setCurrentIndex(0)
-        print(f"Number of Pages {self.stackedWidget.count()}")
-        print(f"Current Page {self.stackedWidget.currentIndex()}")
+        # print(f"Number of Pages {self.stackedWidget.count()}")
+        # print(f"Current Page {self.stackedWidget.currentIndex()}")
 
         initial_tab_setup = initial.tab_initial_setup()
         self.tabWidget_Ribbon_Bar.addTab(initial_tab_setup, "Initial Setup 1")
@@ -133,7 +133,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         print("Action Close Clicked")
 
     def R0C0_actionQuit(self) -> None:
-        print("Action Quit Clicked")
+        # print("Action Quit Clicked")
+        pass
 
     def initial_page_previous(self) -> None:
         """ Go to the next Stacked Widget Page. """

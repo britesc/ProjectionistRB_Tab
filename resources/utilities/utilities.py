@@ -32,4 +32,15 @@ def findMainWindow() -> typing.Union[QMainWindow, None]:
     for widget in QApplication.topLevelWidgets():
         if isinstance(widget, QMainWindow):
             return widget
-    return None    
+    return None
+
+def convertRectToList(rect: QtCore.QRect) -> list:    # type: ignore
+    """ Convert QRect to a List. """
+    temp_tuple = rect
+    
+    # print(f"0. = {temp_tuple}")
+    # print(f"1. = {temp_tuple[0]}") # type: ignore
+    # print(f"2. = {temp_tuple[1]}") # type: ignore
+    # print(f"3. = {temp_tuple[2]}") # type: ignore
+    # print(f"4. = {temp_tuple[3]}") # type: ignore            
+    return [temp_tuple[0],temp_tuple[1],temp_tuple[2],temp_tuple[3]] # type: ignore

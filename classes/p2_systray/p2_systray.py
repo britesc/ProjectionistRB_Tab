@@ -70,6 +70,7 @@ class ProjSysTray:
             self.tray.setVisible(True)
 
             self.tray_menu = QMenu()
+            
             self.action1 = QAction("Show")
             self.action1.triggered.connect(tv.showNormal) # type: ignore
             self.action1.triggered.connect(tv.activateWindow) # type: ignore
@@ -84,7 +85,7 @@ class ProjSysTray:
             self.action2.setVisible(True)
             self.tray_menu.addAction(self.action2)
 
-            self.action3 = QAction("Quit")
+            self.action3 = QAction("Exit")
             self.action3.triggered.connect(app.quit) # type: ignore
             self.action3.setIcon(QIcon(":buttons/buttons/glassRound/glassButtonExit.png"))
             self.tray_menu.addAction(self.action3)
