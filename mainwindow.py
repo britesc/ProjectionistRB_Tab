@@ -181,12 +181,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 pass
 
     def hideEvent(self, event: QHideEvent) -> None:
-        print("Hide Event Triggered")
+        # print("2. Hide Event Triggered")
         self.systray.window_hide()
         return super().hideEvent(event)
     
     def showEvent(self, event: QShowEvent) -> None:
-        print("Show Event Triggered")
+        # print("2. Show Event Triggered")
         self.systray.window_show()      
         return super().showEvent(event)
     

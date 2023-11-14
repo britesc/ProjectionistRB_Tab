@@ -53,6 +53,9 @@ from mainwindow import MainWindow
 
 import buttonsGlassRound_rc  # noqa: F401
 
+# from resources.utilities import utilities
+
+
 def setup_app() -> None:
     """ Set the Application Information. """
     QtCore.QCoreApplication.setOrganizationName("J2Casa")
@@ -130,6 +133,12 @@ def main() -> None:  # sourcery skip: extract-method, remove-pass-body, remove-r
         window.show()
         if do_splash:
             use_splash.hide(window) # type: ignore
+
+        # tv = utilities.findMainWindow()
+        # if tv:
+        #     print(f"Found MainWindow {tv}")
+        # else:
+        #     print("Unable to find MainWindow")
 
     except Exception as err:
         print("Unfortunately the Application has encountered an error \

@@ -35,6 +35,7 @@ from PySide6.QtWidgets import (
     QLabel,
     QMenu
 )
+from resources.utilities import utilities
 
 import buttonsGlassRound_rc
 
@@ -45,11 +46,16 @@ class ProjSysTray:
         """ Init for System Tray. """
         super().__init__()
         
-        self. 
 
         self.class_version = "0.0.4.dev"
         self.module_index = "21"
         self.author_name = "Julian Bourne"
+
+        tv = utilities.findMainWindow()
+        # if tv:
+        #     print(f"Found MainWindow {tv}")
+        # else:
+        #     print("Unable to find MainWindow")
 
         if not QSystemTrayIcon.isSystemTrayAvailable():
             pass
@@ -65,16 +71,17 @@ class ProjSysTray:
 
             self.tray_menu = QMenu()
             self.action1 = QAction("Show")
-            self.action1.triggered.connect(QMainWindow.showNormal) # type: ignore
-            self.action1.triggered.connect(QMainWindow.activateWindow) # type: ignore
-            self.action1.triggered.connect(QMainWindow.raise_) # type: ignore
+            self.action1.triggered.connect(tv.showNormal) # type: ignore
+            self.action1.triggered.connect(tv.activateWindow) # type: ignore
+            self.action1.triggered.connect(tv.raise_) # type: ignore
             self.action1.setIcon(QIcon(u":buttons/buttons/glassRound/glassButtonShow.png"))
+            self.action1.setVisible(False)
             self.tray_menu.addAction(self.action1)
 
             self.action2 = QAction("Hide")
-            self.action2.triggered.connect(QMainWindow.hide) # type: ignore
+            self.action2.triggered.connect(tv.hide) # type: ignore
             self.action2.setIcon(QIcon(u":buttons/buttons/glassRound/glassButtonHide.png"))
-            self.action2.setVisible(False)
+            self.action2.setVisible(True)
             self.tray_menu.addAction(self.action2)
 
             self.action3 = QAction("Quit")
@@ -85,10 +92,14 @@ class ProjSysTray:
             self.tray.setContextMenu(self.tray_menu)
             
     def window_hide(self) -> None:
-        print("window_hide Triggered")
+        # print("1. window_hide Triggered")
+        self.action1.setVisible(True)
+        self.action2.setVisible(False)
         return
     
     def window_show(self) -> None:
-        print("window_show Triggered")        
+        # print("1. window_show Triggered")
+        self.action1.setVisible(False)
+        self.action2.setVisible(True)
         return
                 
